@@ -1,0 +1,1023 @@
+/* ----- POPPINS FONT Link ----- */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* ----- VARIABLES ----- */
+:root{
+    --body-color: rgb(24, 24, 24);
+
+    --text-first-color: rgb(232, 220, 197);
+    --text-second-color: rgb(248, 246, 243);
+    
+    --first-color-blur: rgba(24, 24, 24, 0.1);
+    --first-color-hover: rgb(40, 91, 212);
+}
+
+/* ----- BASE ----- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----- SMOOTH SCROLL ----- */
+html{
+    scroll-behavior: smooth;
+}
+
+/* ----- CHANGE THE SCROLL BAR DESIGN ----- */
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+    display: none;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #bbb;
+}
+
+body {
+    background: var(--body-color);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+    body.loaded {
+    opacity: 1;
+}
+
+
+/* ----- NAVBAR ----- */
+nav{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
+    transition: .3s;
+    z-index: 100;
+}
+.nav-logo img{
+   position: fixed;
+   width: 86px;
+   height: auto;
+   left: 60px;
+   justify-content: center;
+   align-items: center;
+}
+.nav-menu{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border-radius: 32px;
+    background: rgba(24, 24, 24, 0.10);
+    backdrop-filter: blur(5px);
+}
+
+.nav-menu .nav_menu_list{
+    display: flex;
+    margin: 12px 24px;
+    gap: 36px;
+}
+.nav-menu .nav_list{
+    display: flex;
+    list-style: none;
+    font-family: 'geologica';
+    justify-content: center;
+    color: var(--text-second-color);
+}
+.nav-link{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-size: 14px;
+    font-weight: 400;
+    transition: ease-in-out .5s;
+}
+
+.nav-link:hover{
+    color: var(--text-first-color);
+}
+
+.nav-menu-btn{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    display: none;
+}
+.nav-menu-btn i{
+    font-size: 28px;
+    cursor: pointer;
+}
+.active-link{
+    position: relative;
+    color: var(--text-first-color);
+    transition: .3;
+}
+
+/* ----- FEATURED-BOX ----- */
+#home{
+    font-family: 'geologica';
+    height: 100vh;
+    position: relative; 
+    overflow: hidden;
+}
+.featured-box{
+    display: flex;
+    width: 100%;
+    height: 100%; 
+    align-items: center;
+    position: relative;
+}
+.featured-text{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+.video-bg video{
+    width: 100vw; 
+    height: 100vh;
+    object-fit: cover;
+    z-index: -2;
+    position: relative;
+    filter: brightness(50%);
+}
+
+.header-text{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    left: 60px;
+    bottom: 20%;
+    color: var(--text-second-color);
+}
+
+.header-text .header{
+    font-size: 60px;
+    font-family: 'barlow';
+    font-weight: 600;
+}
+
+.header-text .typedText1, 
+.header-text .typedText2{
+    color: var(--text-first-color);
+}
+
+.header-text .deskripsi{
+    font-size: 20px;
+    font-weight: 300;
+    width: 600px;
+    font-family: 'geologica';
+    margin-top: 12px;
+}
+
+.GIT-btn{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid var(--text-second-color);
+    background: rgba(24, 24, 24, 0.10);
+    backdrop-filter: blur(10px);
+    margin-top: 32px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.GIT-btn p{
+    font-size: 16px;
+    margin: 13px 36px;
+    font-weight: 500;
+    color: var(--text-second-color);
+}
+
+.social_icons{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(28, 28, 28, 0.01);
+    backdrop-filter: blur(8px);
+}
+.icon a{
+    text-decoration: none;
+    color: var(--text-second-color);
+    margin: 10px;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    display: none;
+}
+
+.card-confident{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: var(--text-second-color);
+    justify-content: center;
+    border-radius: 16px;
+    width: fit-content;
+    background: rgba(24, 24, 24, 0.30);
+    backdrop-filter: blur(6px);
+    bottom: 10%;
+    right: 60px;
+}
+
+.confident-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px 24px;
+}
+
+.confident-text p{
+    display: flex;
+    font-size: 20px;
+    gap: 16px;
+    align-items: center;
+    font-weight: 400;
+    font-family: 'geologica';
+}
+
+.card-right p i{
+    font-size: 32px;
+}
+
+/* ----- CRAFTING ----- */
+.header-craft{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+    color: var(--text-second-color);
+    margin-top: 60px;
+}
+
+.header-craft-text{
+    font-size: 32px;
+    font-weight: 600;
+    font-family: 'barlow';
+}
+
+.header-craft-text .sec{
+    color: var(--text-first-color);
+}
+
+.header-craft .deskripsi-craft{
+    font-size: 16px;
+    font-family: 'geologica';
+    width: 945px;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+.craft-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 60px;
+    margin-top: 44px;
+}
+
+.content-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-box .content-box-img{
+    width: 370px;
+    height: 430px;
+    overflow: hidden;
+}
+
+.content-box-img img{
+    object-fit: cover;
+    width: 370px;
+}
+
+.header-box{
+    font-family: 'barlow';
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.header-box, .deskripsi-box{
+    color: var(--text-second-color);
+    text-align: center;
+    align-items: center;
+}
+
+.deskripsi-box{
+    font-family: 'geologica';
+    font-size: 16px;
+    font-weight: 300;
+    width: 370px;
+}
+
+/* ----- ABOUT US ----- */
+.about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+}
+.bg-about img{
+    position: relative;
+    width: 1320px;
+    filter: brightness(70%);
+}
+.about-us-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 480px; 
+    margin: 0 60px;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.about-us-img img{
+    width:420px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-contain{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+}
+
+.about-us-text{
+    height: fit-content;
+    justify-content: center;
+    margin: auto;
+    border-radius: 16px;
+    background: rgba(24, 24, 24, 0.10);
+    backdrop-filter: blur(15px);
+}
+
+.about-us-text .about-deskripsi{
+    font-family: 'geologica';
+    font-size: 20px;
+    width: 730px;
+    font-weight: 200;
+    justify-content: center;
+    color: var(--text-second-color);
+    margin: 40px;
+}
+
+/* ----- PARTNERSHIP ----- */
+.partnership{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 100vw;
+    height: 100%;
+}
+
+.partnership-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: auto;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.partnership-img img{
+    height: 54px;
+    width: fit-content;
+    transition: all 0.5s ease;
+}
+.partnership-img img:hover{
+    transform: scale(1.1);
+}
+.elevating{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.elev-img{
+    position: relative;
+    width: 100%;
+    height: 220px;
+    margin: auto;
+}
+
+.elev-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(60%);
+}
+
+.elev-text{
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    font-family: "geologica";
+}
+
+.elev-header p{
+    color: var(--text-first-color);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.elev-deskripsi p{
+    color: var(--text-second-color);
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 6px;
+}
+
+/* ----- OTHER ELEMEN ----- */
+.quality-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'geologica';
+    width: 100vw;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.quality-text{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-left: 60px;
+    color: var(--text-second-color);
+}
+
+.first-text{
+    font-size: 14px;
+    font-weight: 500;
+    align-items: center;
+    display: flex; 
+    flex-direction: row;
+}
+.first-text hr{
+    margin-right: 10px;
+    width: 20px;
+    border: 1.5px solid var(--text-second-color);
+}
+
+.sec-text{
+    font-family: 'barlow';
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.sec-text-content .sec{
+    color: var(--text-first-color);
+}
+
+.third-text{
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 18px;
+    width: 600px;
+}
+
+.quality-box{
+    display: flex;
+    text-align: center;
+    gap: 28px;
+    margin-top: 36px;
+}
+
+.quality-box-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    border: 2px solid var(--text-second-color);
+}
+
+.quality-box-content i{
+    font-size: 50px;
+}
+
+.quality-box-content p{
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.quality-btn{
+    margin-top: 54px;
+}
+
+.quality-btn a{
+    text-decoration: none;
+    color: var(--text-second-color);
+    align-items: center;
+    border-bottom: 2px solid var(--SECOND-TEXT-COLOR, #F8F6F3);
+    backdrop-filter: blur(10px);
+}
+
+.quality-img{
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-right: 60px;
+}
+
+.quality-img img{
+    object-fit: cover;
+    width: fit-content;
+}
+
+/* ----- SHORT PROJECT ----- */
+section .short-project{
+    display: flex;
+    width: 100%;
+}
+
+.project-short-contain{
+    justify-content: center;
+    align-items: center;
+    margin: 100px 60px;
+}
+
+.project-text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.main-title{
+    display: flex;
+    font-family: 'barlow';
+    flex-direction: column;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.first-title{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    max-width: fit-content;
+    color: var(--text-second-color);
+}
+
+.first-title .sec-color{
+    color: var(--text-first-color);
+}
+
+.sec-title{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    color: var(--text-second-color);
+}
+
+.sec-title .sec-color{
+    color: var(--text-first-color);
+}
+
+.deskripsi-title{
+    display: flex;
+    font-family: 'geologica';
+    font-size: 16px;
+    font-weight: 300;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    color: var(--text-second-color);  
+}
+
+.opening-project{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 50px;
+    width: 100%;
+}
+.left-opening{
+    font-family: 'geologica';
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text-second-color);
+}
+
+.right-opening a{
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-family: 'geologica';
+}
+
+.right-opening p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.project-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.main-content{
+    display: flex;
+    width: 270px;
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.3);
+    transition: all 0.7s ease;
+    filter: brightness(55%)
+}
+
+.main-content img:hover{
+    transform: scale(1);
+    filter: brightness(90%)
+}
+
+.project-text-short{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 4px;
+    font-family: 'geologica';
+    margin: 0 14px;
+    bottom: 6%;
+}
+
+.project-text-short .title-project{
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-second-color);
+}
+
+.project-text-short .deskripsi-project{
+    font-size: 14px;
+    font-weight: 300;
+    color: #ececec;
+}
+
+.testimoni-content{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 40px;
+    transition: all 0.5s ease;
+}
+
+.card-testi-content{
+    width: 400px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(7px);
+    display: flex;
+    transform: translateZ(0);
+    will-change: transform;
+    transform-origin: center;
+    border-radius: 16px;
+    padding: 16px 10px 16px 16px;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.card-title{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.card-title img{
+    width: 50px;
+    height: 50px;
+}
+
+.name-title{
+    font-family: 'geologica';
+}
+
+.name-client{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-second-color);
+}
+
+.client-project{
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-first-color);
+}
+
+.main-containt-testi{
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    color: var(--text-second-color);
+    font-family: 'geologica';
+    margin: 14px 0 16px 0px;
+}
+
+.card-testi-content:hover{
+    transform: scale(1.05);
+    border: 1.5px solid #F8F6F3;
+}
+
+.bg-grafik img{
+    position: relative;
+    z-index: -9999;
+    width: auto;
+    height: 400px;
+    display: flex;
+    left: -20%;
+    justify-content: center;
+    align-items: left;
+}
+
+/* FAQ */
+.faq-content{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: 'geologica';
+    margin-top: 100px;
+}
+
+.faq-title{
+    align-items: center;
+    display: flex;
+    margin: auto;
+    font-family: 'barlow';
+    font-size: 44px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: var(--text-second-color);
+}
+
+.card-faq-content{
+    color: var(--text-second-color);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 40px;
+    max-width: 90%;
+    border-radius: 24px;
+    border: 2px solid #F8F6F3;
+    margin: 0 60px;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.question{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.question i{
+    font-size: 36px;
+    transition: transform 0.8s ease;
+}
+
+.answer p{
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 16px;
+    color: #ececec;
+}
+
+.answer{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease;
+}
+
+.card-faq-content.active .answer{
+    max-height: 300px;
+    animation: fade 0.5s ease-in-out;
+}
+
+.card-faq-content.active i{
+    transform: rotate(180deg);
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grafik-bottom{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.deskripsi-grafik{
+    font-family: 'geologica';
+    color: var(--text-second-color);
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 100px;
+}
+
+/* ----- FOOTER BOX ----- */
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: #212121;
+    padding-block: 40px 60px;
+    font-family: 'geologica';
+}
+.logo-footer img{
+    height: 200px;
+    margin-left: -20px;
+    margin-top: -44px;
+}
+.bottom-footer{
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.sosmed{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: -44px;
+}
+
+.sosmed-contain{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    color: var(--text-second-color);
+}
+
+.sosmed-contain p{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.sosmed-contain i{
+    font-size: 32px;
+}
+
+.grafik-footer img{
+    width: 250px;
+    margin-bottom: -20px;
+}
+
+.right-footer{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    text-align: right;
+    bottom: 60px;
+    right: 60px;
+    gap: 32px;
+}
+
+.right-title p{
+    font-size: 36px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #377E80 22.97%, #3FB0B2 99.6%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.deskripsi-footer{
+    background: linear-gradient(91deg, #C2C2C2 0.54%, #5C5C5C 118.78%);
+    font-size: 20px;
+    font-weight: 400;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bottom-footer{
+    font-size: 16px;
+    color: var(--text-second-color);
+}
+
+.bottom-footer a{
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-weight: 500;
+    color: #BCBCBC;
+}
