@@ -629,7 +629,7 @@ section .short-project{
     display: flex;
     flex-direction: row;
     gap: 12px;
-    max-width: fit-content;
+    width: max-content;
     color: var(--text-second-color);
 }
 

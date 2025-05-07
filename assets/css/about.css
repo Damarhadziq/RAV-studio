@@ -193,7 +193,9 @@ nav{
     transform: translate(-50%, -50%);
     color: var(--text-second-color);
 }
-
+.top-title{
+    width: max-content;
+}
 .Masterpieces{
     background: linear-gradient(92deg, #E8DCC5 56.12%, #FFF 87.2%);
     background-size: 200% 400%;
