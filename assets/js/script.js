@@ -1,3 +1,7 @@
+if (window.innerWidth < 1024) {
+  window.location.href = "redirect.html";
+}
+
 var typingEffect = new Typed(".typedText1", {
     strings: ["Dreams", "Futures","Visions"],
     loop : true,
