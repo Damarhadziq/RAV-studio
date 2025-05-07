@@ -1,6 +1,16 @@
-if (window.innerWidth < 1024) {
-  window.location.href = "redirect.html";
-}
+  const REDIRECT_URL   = 'redirect.html';
+  const MIN_DESKTOP    = 1024;
+
+  function guardDesktop () {
+    if (window.innerWidth < MIN_DESKTOP) {
+      if (!location.pathname.endsWith(REDIRECT_URL)) {
+        location.href = REDIRECT_URL;
+      }
+    }
+  }
+
+  guardDesktop();
+  window.addEventListener('resize', guardDesktop);
 
 var typingEffect = new Typed(".typedText1", {
     strings: ["Dreams", "Futures","Visions"],
