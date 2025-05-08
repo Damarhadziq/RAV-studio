@@ -4,5 +4,5 @@ function checkScreenSize() {
     }
   }
 
-  checkScreenSize(); // Cek saat pertama kali halaman dibuka
+  checkScreenSize();
   window.addEventListener('resize', checkScreenSize);

@@ -500,89 +500,12 @@ nav{
     width: 150px;
 }
 
-/* CURVE ELEMENT CONTENT */
-.curve-contain{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1320px;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    position: relative;
-}
-
-.curve-text{
-    display: flex;
-    font-family: 'barlow';
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    max-width: 570px;
-    gap: 10px;
-    top: 20px;
-    left: 0;
-}
-
-.curve-title{
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--text-second-color);
-    width: 100%;
-}
-
-.curve-title .sec{
-    color: var(--text-first-color);
-}
-
-.curve-deskripsi{
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--text-second-color);
-    font-family: 'geologica';
-}
-
-.curve-logo{
-    position: absolute;
-    right: 24px;
-    bottom: 12px;
-}
-
-.curve-logo img{
-    width: 150px;
-}
-
-.fade {
-    opacity: 0;
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-  
-.fade.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-  
-
-.curve-bg{
-    z-index: -999;
-    max-width: 1320px;
-}
-
-.curve-bg img{
-    width: 100%;
-    height: auto;
-    position: relative;
-    object-fit: cover;
-    filter: brightness(80%);
-}
-
 /* INOVASI */
 .inovasi{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
 }
 
 .inovasi-text{

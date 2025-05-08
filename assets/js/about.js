@@ -1,25 +1,27 @@
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-  });
-const fadeImage = document.getElementById("fade-image");
+const REDIRECT_URL   = 'redirect.html';
+const MIN_DESKTOP    = 1024;
 
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-    if (entry.isIntersecting) {
-    fadeImage.classList.add("show");
+function guardDesktop () {
+  if (window.innerWidth < MIN_DESKTOP) {
+    if (!location.pathname.endsWith(REDIRECT_URL)) {
+      location.href = REDIRECT_URL;
     }
-});
-}, {
-threshold: 0.5 // aktif jika 50% terlihat
-});
+  }
+}
 
-observer.observe(fadeImage);
+guardDesktop();
+window.addEventListener('resize', guardDesktop);
+
+
 const sr = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 2000,
     reset: false     
 })
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
 /* -- ABOUT -- */
 sr.reveal('.nav-logo',{delay: 100})
 sr.reveal('.short-text',{delay: 100})
