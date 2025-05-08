@@ -1,6 +1,6 @@
 <?php
 $localhost  = "localhost";
-$username   = "root";       // ← ini dia!
+$username   = "root";  
 $password   = "";
 $database   = "rav_studio";
 
