@@ -650,15 +650,19 @@ nav{
 
 .form-contain {
     display: flex;
+    justify-content: space-between;
     margin: 60px;
     padding: 40px;
     font-family: 'barlow';
-    background-color: #2121217e;
+    background-color: #21212182;
     background-image: url('../img/form\ bg.jpg');
     background-size: cover;
     background-blend-mode: color;
     border-radius: 16px;
-    background-position: center;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    position: relative;
+    align-items: flex-end;
 }
 .left-contain-form{
     display: flex;
@@ -847,6 +851,49 @@ button:hover span {
     opacity: 0.7;
 }
 
+.right-contain-form{
+    flex-direction: column;
+    gap: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.top-right-contain{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-right-contain img{
+    animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.top-right-contain p{
+    color: #ECECEC;
+    font-family: Geologica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+}
+
+.bottom-right-contain{
+    display: flex;
+    color: #FFF;
+    font-family: Geologica;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}
 /* FOOTER */
 footer{
     display: flex;

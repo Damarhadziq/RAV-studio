@@ -85,3 +85,11 @@ sr.reveal('.founder-information', {
 sr.reveal('.name-founder',{delay: 200})
 sr.reveal('.deskripsi-information',{delay: 300})
 sr.reveal('.founder-img',{delay: 200})
+
+// FORM
+sr.reveal('.title-form',{delay: 80})
+sr.reveal('.deskripsi-form',{delay: 160})
+sr.reveal('.form-control',{interval: 400})
+sr.reveal('.btn-shine span',{delay: 200})
+sr.reveal('.top-right-contain',{delay: 100})
+sr.reveal('.bottom-right-contain',{delay: 200})
