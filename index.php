@@ -313,6 +313,7 @@ $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id DESC LIM
                         </a>
                     </div>
                 </div>
+                <!-- -------------- Recent Project ---------------- -->
                 <div class="project-content">
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                     <div class="main-content">

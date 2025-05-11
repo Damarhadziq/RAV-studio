@@ -11,7 +11,7 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// Jika form disubmit
+// Form disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $target_dir = "uploads/";
     $image_name = basename($_FILES["image"]["name"]);
