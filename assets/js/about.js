@@ -93,3 +93,6 @@ sr.reveal('.form-control',{interval: 400})
 sr.reveal('.btn-shine span',{delay: 200})
 sr.reveal('.top-right-contain',{delay: 100})
 sr.reveal('.bottom-right-contain',{delay: 200})
+
+sr.reveal('.grafik-bottom img',{delay: 100})
+sr.reveal('.deskripsi-grafik',{delay: 200})
