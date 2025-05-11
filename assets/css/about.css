@@ -474,7 +474,7 @@ nav{
 }
 
 .name-founder {
-    color: #FFF;
+    color: var(--text-first-color);
     font-family: 'Geologica';
     font-size: 24px;
     font-weight: 400;
@@ -895,6 +895,28 @@ button:hover span {
     line-height: normal;
     letter-spacing: -0.24px;
 }
+
+.grafik-bottom{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.deskripsi-grafik{
+    font-family: 'geologica';
+    color: var(--text-second-color);
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 100px;
+}
+
 /* FOOTER */
 footer{
     display: flex;
