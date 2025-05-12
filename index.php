@@ -10,6 +10,7 @@ if (!$conn) {
 }
 
 $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id DESC LIMIT 5"); // ambil 5 terbaru
+$review_query = mysqli_query($conn, "SELECT client_name, project_name, review FROM client_review ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>
@@ -335,109 +336,31 @@ $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id DESC LIM
          </section>
 
         <!-- -------------- TESTIMONIAL ---------------- -->
-         <section class="testimoni">
+        <section class="testimoni">
             <div class="testimoni-content">
+                <?php while ($row = mysqli_fetch_assoc($review_query)) : ?>
                 <div class="card-testi-content">
                     <div class="card-title">
-                        <img src="assets/img/Group.svg" alt="profile">
+                        <img src="assets/img/default-avatar.svg" alt="profile"> <!-- ganti sesuai gambar default -->
                         <div class="name-title">
                             <div class="name-client">
-                                <p>Amanda K. Putri</p>
+                                <p><?= htmlspecialchars($row['client_name']); ?></p>
                             </div>
                             <div class="client-project">
-                                <p>Owner of Teras Senja Café</p>
+                                <p><?= htmlspecialchars($row['project_name']); ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="main-containt-testi">
-                        <p>The RAV team truly captured our vision and transformed it into a design that far exceeded expectations.</p>
+                        <p><?= htmlspecialchars($row['review']); ?></p>
                     </div>
                 </div>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/Group2.svg" alt="profile">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p>Raymond Satria</p>
-                            </div>
-                            <div class="client-project">
-                                <p>Owner of Satria Co-Working Space</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-containt-testi">
-                        <p>Functional yet elegant design. The process was transparent and highly professional.</p>
-                    </div>
-                </div>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/Group3.svg" alt="profile">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p>Nadya Ramadhani</p>
-                            </div>
-                            <div class="client-project">
-                                <p>Owner of Kopi Lembayung</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-containt-testi">
-                        <p>I felt heard from the beginning. RAV helped bring to life a business space that is both beautiful and comfortable.</p>
-                    </div>
-                </div>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/Group4.svg" alt="profile">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p>Benny Tan</p>
-                            </div>
-                            <div class="client-project">
-                                <p>Owner of Tan’s Urban Resto</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-containt-testi">
-                        <p>RAV’s work quality is outstanding, with clean details and smooth communication throughout. </p>
-                    </div>
-                </div>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/5.svg" alt="">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p>Laras Wibowo</p>
-                            </div>
-                            <div class="client-project">
-                                <p>Owner of Studio Kinari</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-containt-testi">
-                        <p>Very satisfied with the final result. A modern aesthetic that still blends beautifully with its surroundings.</p>
-                    </div>
-                </div>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/Group6.svg" alt="">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p>Fadli R. Mahendra</p>
-                            </div>
-                            <div class="client-project">
-                                <p>Owner of Mahendra Barberspace</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-containt-testi">
-                        <p>RAV helped us create a space that is not only functional but also full of strong character.</p>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
             <div class="bg-grafik">
                 <img src="assets/img/grafik bg.png" alt="grafik-bg">
             </div>
-         </section>
+        </section>
 
         <!-- -------------- FAQ ---------------- -->
          <section class="faq" id="faq">
