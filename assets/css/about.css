@@ -196,24 +196,32 @@ nav{
 .top-title{
     width: max-content;
 }
-.Masterpieces{
-    background: linear-gradient(92deg, #E8DCC5 56.12%, #FFF 87.2%);
-    background-size: 200% 400%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: Barlow;
+.Masterpieces {
+    position: relative;
+    display: inline-block;
+    font-family: 'Barlow', sans-serif;
     font-size: 54px;
     font-style: italic;
     font-weight: 600;
     line-height: normal;
-    animation: gradientMove 2s ease infinite;
+    color: transparent;
+    background: linear-gradient(90deg, #ecdcbe 20%, #ebebeb 40%, #E8DCC5 60%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
 }
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 50% 0%; }
-  }
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
 .btn-explore{
     position: absolute;
     top: 65%;

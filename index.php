@@ -63,10 +63,10 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                 </li>
             </ul>
         </div>
-        <div class="nav-menu-btn">
+        <!-- <div class="nav-menu-btn">
             <i id="menu-icon" class="uil uil-bars" onclick="toggleMenu()"></i>
             <i id="close-icon" class="uil uil-multiply" style="display: none;" onclick="toggleMenu()"></i>
-        </div>
+        </div> -->
       </nav>
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
@@ -341,7 +341,7 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                 <?php while ($row = mysqli_fetch_assoc($review_query)) : ?>
                 <div class="card-testi-content">
                     <div class="card-title">
-                        <img src="assets/img/default-avatar.svg" alt="profile"> <!-- ganti sesuai gambar default -->
+                        <img src="assets/img/Group.svg" alt="profile">
                         <div class="name-title">
                             <div class="name-client">
                                 <p><?= htmlspecialchars($row['client_name']); ?></p>
