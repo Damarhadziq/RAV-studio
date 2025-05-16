@@ -63,10 +63,6 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                 </li>
             </ul>
         </div>
-        <!-- <div class="nav-menu-btn">
-            <i id="menu-icon" class="uil uil-bars" onclick="toggleMenu()"></i>
-            <i id="close-icon" class="uil uil-multiply" style="display: none;" onclick="toggleMenu()"></i>
-        </div> -->
       </nav>
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
@@ -198,7 +194,7 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                         </div>
                     </div>
                 </div>
-         </section>
+        </section>
 
         <!-- -------------- PARTNERSHIP ---------------- -->
          <section class="partnership">
@@ -421,8 +417,8 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                 </div>
             </div>
          </section>
+        </div>
     </main>
-    </div>
 
     <!-- --------------- FOOTER --------------- -->
     <footer>
@@ -463,6 +459,9 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
+    <!-- ----- GSAP ----- -->
+    <script src="assets/js/gsap.min.js"></script>
+    
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/script.js"></script>
 

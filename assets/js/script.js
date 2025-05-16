@@ -11,15 +11,9 @@
 
   guardDesktop();
   window.addEventListener('resize', guardDesktop);
-if (/Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent)) {
-  // Ini pengguna mobile
-  if (window.innerWidth >= 1024) {
-    // Tapi dia pakai mode desktop
-    // Redirect paksa ke mobile version
-    window.location.href = 'redirect.html'; // ganti dengan URL halaman mobile kamu
-  }
-}
-var typingEffect = new Typed(".typedText1", {
+
+document.addEventListener("DOMContentLoaded", () => {
+  var typingEffect = new Typed(".typedText1", {
     strings: ["Dreams", "Futures","Visions"],
     loop : true,
     typeSpeed : 100, 
@@ -148,4 +142,6 @@ const sentences = [
     faq.addEventListener("click", () => {
       faq.classList.toggle("active");
     });
+  });
+
   });

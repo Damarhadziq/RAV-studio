@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Serif+Text:ital@0;1&family=Geologica:wght@100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ----- VARIABLES ----- */
+:root{
+    --body-color: rgb(24, 24, 24);
+
+    --text-first-color: rgb(232, 220, 197);
+    --text-second-color: rgb(248, 246, 243);
+    
+    --first-color-blur: rgba(24, 24, 24, 0.1);
+    --first-color-hover: rgb(40, 91, 212);
+}
+
+/* ----- BASE ----- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----- SMOOTH SCROLL ----- */
+html{
+    scroll-behavior: smooth;
+}
+
+/* ----- CHANGE THE SCROLL BAR DESIGN ----- */
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+    display: none;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #bbb;
+}
+
+body {
+    background: var(--body-color);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+    body.loaded {
+    opacity: 1;
+}
+
+/* ----- NAVBAR ----- */
+nav{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
+    transition: .3s;
+    z-index: 100;
+}
+.nav-logo img{
+   position: fixed;
+   width: 86px;
+   height: auto;
+   left: 60px;
+   justify-content: center;
+   align-items: center;
+}
+.nav-menu{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border-radius: 32px;
+    background: rgba(24, 24, 24, 0.10);
+    backdrop-filter: blur(5px);
+}
+
+.nav-menu .nav_menu_list{
+    display: flex;
+    margin: 12px 24px;
+    gap: 36px;
+}
+.nav-menu .nav_list{
+    display: flex;
+    list-style: none;
+    font-family: 'geologica';
+    justify-content: center;
+    color: var(--text-second-color);
+}
+.nav-link{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-size: 14px;
+    font-weight: 400;
+    transition: ease-in-out .5s;
+}
+
+.nav-link:hover{
+    color: var(--text-first-color);
+}
+
+.nav-menu-btn{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    display: none;
+}
+.nav-menu-btn i{
+    font-size: 28px;
+    cursor: pointer;
+}
+.active-link{
+    position: relative;
+    color: var(--text-first-color);
+    transition: .3;
+}
+
+/* TOP-PROJECT */
+.top-project{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.top-project-contain{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    background-image: url('../img/PROJECT\ FIRST\ BG.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: flex-end; 
+}
+
+.left-project-contain{
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    align-items: center;
+    gap: 24px;
+    justify-content: center;
+    
+}
+
+.top-title-project{
+    display: flex;
+    flex-direction: column;
+}
+
+.first-title{
+    font-family: Barlow;
+    max-width: 370px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background: linear-gradient(90deg, #999 0%, #FFF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sec-title{
+    font-family: Barlow;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background: linear-gradient(90deg, #777272 0%, #D4CAFF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top-grafik-bg img{
+    max-width: 700px;
+}
+
+.right-img-contain{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    right: -20%;
+    bottom: 6%;
+}
+
+.main-img{
+    position: relative;
+
+}
+
+.svg-img img{
+    width: 75px;
+    position: absolute;
+    height: 87px;
+    flex-shrink: 0;
+    top: -8%;
+    left: -10%;
+}
+
+.img-contain{
+    overflow: hidden;
+    width: 450px;
+    height: 465px;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.img-contain img{
+    width: 450px;
+    filter: brightness(70%);
+}
+
+.blur-card{
+    position: absolute;
+    bottom: 24%;
+    left: -20%;
+    z-index: 9;
+}
+
+.blur-card-text{
+    position: relative;
+    display: flex;
+    padding: 10px 1px 10px 12px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(153, 153, 153, 0.10) 100%);
+    backdrop-filter: blur(6px);
+}
+
+.blur-card p{
+    max-width: 175px;
+    color: #FFF;
+    font-family: barlow;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+}
+
+.blur-svg{
+    position: absolute;
+    top: -44%;
+    left: -12%;
+    z-index: -1;
+}
+
+.blur-svg img{
+    width: 60px;
+}
+
+.bottom-right-contain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 24px;
+}
+
+.text-bottom{
+    max-width: 500px;
+    text-align: right;
+    font-size: 16px;
+    color: var(--text-second-color);
+    font-family: geologica;
+}
+
+/* FOOTER */
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: 100%;
+    margin-top: 100px;
+    width: 100%;
+    position: relative;
+    background: #212121;
+    padding-block: 40px 60px;
+    font-family: 'geologica';
+}
+.logo-footer img{
+    height: 200px;
+    margin-left: -20px;
+    margin-top: -44px;
+}
+.bottom-footer{
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.sosmed{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: -44px;
+}
+
+.sosmed-contain{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    color: var(--text-second-color);
+}
+
+.sosmed-contain p{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.sosmed-contain i{
+    font-size: 32px;
+}
+
+.grafik-footer img{
+    width: 250px;
+    margin-bottom: -20px;
+}
+
+.right-footer{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    text-align: right;
+    bottom: 60px;
+    right: 60px;
+    gap: 32px;
+}
+
+.right-title p{
+    font-size: 36px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #377E80 22.97%, #3FB0B2 99.6%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.deskripsi-footer{
+    background: linear-gradient(91deg, #C2C2C2 0.54%, #5C5C5C 118.78%);
+    font-size: 20px;
+    font-weight: 400;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bottom-footer{
+    font-size: 16px;
+    color: var(--text-second-color);
+}
+
+.bottom-footer a{
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-weight: 500;
+    color: #BCBCBC;
+}
+
