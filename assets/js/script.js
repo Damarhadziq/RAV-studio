@@ -32,7 +32,7 @@ var typingEffect = new Typed(".typedText2", {
     origin: 'top',
     distance: '80px',
     duration: 2000,
-    reset: false     
+    reset: true     
 })
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
