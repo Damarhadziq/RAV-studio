@@ -11,7 +11,9 @@
 
   guardDesktop();
   window.addEventListener('resize', guardDesktop);
-
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
 document.addEventListener("DOMContentLoaded", () => {
   var typingEffect = new Typed(".typedText1", {
     strings: ["Dreams", "Futures","Visions"],
@@ -30,13 +32,11 @@ var typingEffect = new Typed(".typedText2", {
 
  const sr = ScrollReveal({
     origin: 'top',
-    distance: '80px',
+    distance: '100px',
     duration: 2000,
     reset: true     
 })
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
+
 /* -- HOME -- */
 sr.reveal('.nav-logo',{delay: 100})
 sr.reveal('.featured-text-card',{})
@@ -66,8 +66,7 @@ sr.reveal('.content-box-img', {
   }
 });
 
-sr.reveal('.header-box',{interval: 100})
-sr.reveal('.deskripsi-box',{interval: 100})
+sr.reveal('.content-box',{delay: 100})
 
 // ABOUT US
 sr.reveal('.about-us-content',{interval: 200})

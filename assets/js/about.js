@@ -15,7 +15,7 @@ window.addEventListener('resize', guardDesktop);
 
 const sr = ScrollReveal({
     origin: 'top',
-    distance: '80px',
+    distance: '100px',
     duration: 2000,
     reset: true     
 })
