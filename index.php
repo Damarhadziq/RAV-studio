@@ -9,8 +9,8 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-$result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id DESC LIMIT 5"); // ambil 5 terbaru
-$review_query = mysqli_query($conn, "SELECT client_name, project_name, review FROM client_review ORDER BY created_at DESC");
+$result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
+$clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY created_at ASC");
 ?>
 
 <!DOCTYPE html>
@@ -334,25 +334,26 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
         <!-- -------------- TESTIMONIAL ---------------- -->
         <section class="testimoni">
             <div class="testimoni-content">
-                <?php while ($row = mysqli_fetch_assoc($review_query)) : ?>
-                <div class="card-testi-content">
-                    <div class="card-title">
-                        <img src="assets/img/Group.svg" alt="profile">
-                        <div class="name-title">
-                            <div class="name-client">
-                                <p><?= htmlspecialchars($row['client_name']); ?></p>
-                            </div>
-                            <div class="client-project">
-                                <p><?= htmlspecialchars($row['project_name']); ?></p>
+                <?php while ($row = mysqli_fetch_assoc($clientReviews)) : ?>
+                    <div class="card-testi-content">
+                        <div class="card-title">
+                            <img src="<?= htmlspecialchars($row['photo']) ?>" alt="profile" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                            <div class="name-title">
+                                <div class="name-client">
+                                    <p><?= htmlspecialchars($row['client_name']) ?></p>
+                                </div>
+                                <div class="client-project">
+                                    <p><?= htmlspecialchars($row['project_name']) ?></p>
+                                </div>
                             </div>
                         </div>
+                        <div class="main-containt-testi">
+                            <p><?= htmlspecialchars($row['review']) ?></p>
+                        </div>
                     </div>
-                    <div class="main-containt-testi">
-                        <p><?= htmlspecialchars($row['review']); ?></p>
-                    </div>
-                </div>
                 <?php endwhile; ?>
             </div>
+
             <div class="bg-grafik">
                 <img src="assets/img/grafik bg.png" alt="grafik-bg">
             </div>
