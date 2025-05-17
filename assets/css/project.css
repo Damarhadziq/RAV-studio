@@ -127,8 +127,9 @@ nav{
 /* TOP-PROJECT */
 .top-project{
     width: 100vw;
+    position: relative;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .top-project-contain{
@@ -146,7 +147,7 @@ nav{
 .left-project-contain{
     display: flex;
     flex-direction: column;
-    z-index: 999;
+    z-index: 9;
     align-items: center;
     gap: 24px;
     justify-content: center;
@@ -281,6 +282,17 @@ nav{
     font-family: geologica;
 }
 
+.blur-mask-bottom{
+    position: absolute;
+    bottom: -22%;
+    right: 0%;
+    width: 2055px;
+    height: 217px;
+    background: var(--MAIN-COLOR, #181818);
+    filter: blur(40px);
+    z-index: 20;
+}
+
 /* FOOTER */
 footer{
     display: flex;
@@ -294,6 +306,7 @@ footer{
     background: #212121;
     padding-block: 40px 60px;
     font-family: 'geologica';
+    z-index: 9999;
 }
 .logo-footer img{
     height: 200px;
