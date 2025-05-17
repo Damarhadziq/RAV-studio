@@ -11,6 +11,8 @@ if (!$conn) {
 
 $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
 $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY created_at ASC");
+$faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
+
 ?>
 
 <!DOCTYPE html>
@@ -360,56 +362,24 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
         </section>
 
         <!-- -------------- FAQ ---------------- -->
-         <section class="faq" id="faq">
+        <section class="faq" id="faq">
             <div class="faq-content">
                 <div class="faq-title">
                     <p>Frequently Ask Question</p>
                 </div>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p>What services does your company offer?</p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
+
+                <?php while ($row = mysqli_fetch_assoc($faqResult)): ?>
+                    <div class="card-faq-content">
+                        <div class="question">
+                            <p><?= htmlspecialchars($row['question']) ?></p>
+                            <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
+                        </div>
+                        <div class="answer">
+                            <p><?= nl2br(htmlspecialchars($row['answer'])) ?></p>
+                        </div>
                     </div>
-                    <div class="answer">
-                        <p>We provide a range of architectural services, including building design, space planning, interior design consultation, renovation, and construction project management.</p>
-                    </div>
-                </div>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p>Do you handle small-scale projects, or only large ones?</p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                    </div>
-                    <div class="answer">
-                        <p>We cater to all types of projects, from private residences and commercial spaces to large-scale developments like office buildings and public facilities.</p>
-                    </div>
-                </div>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p>How long does it take to complete a project?</p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                    </div>
-                    <div class="answer">
-                        <p>Project duration depends on the complexity of the design, the scale of the building, and permit processing. The design phase may take a few weeks to months, while construction timelines vary based on the project size.</p>
-                    </div>
-                </div>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p>How does the collaboration process work?</p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                    </div>
-                    <div class="answer">
-                        <p>It starts with an initial consultation to understand the client's needs. We then create a concept design, refine it based on feedback, and proceed to detailed engineering and construction phases.</p>
-                    </div>
-                </div>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p>Can you work with a contractor chosen by the client?</p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                    </div>
-                    <div class="answer">
-                        <p>Absolutely. We can collaborate with your preferred contractor or recommend trusted partners we have worked with before.</p>
-                    </div>
-                </div>
+                <?php endwhile; ?>
+
             </div>
             <div class="grafik-bottom">
                 <img src="assets/img/grafik2.png" alt="">
@@ -417,7 +387,10 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
                     <p>Sustainable Structures Enduring Beauty</p>
                 </div>
             </div>
-         </section>
+        </section>
+
+        <?php mysqli_close($conn); ?>
+
         </div>
     </main>
 
