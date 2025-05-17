@@ -431,7 +431,7 @@ $review_query = mysqli_query($conn, "SELECT client_name, project_name, review FR
                     <i class="hgi hgi-stroke hgi-instagram"></i><p>ravstudio.id</p>
                 </div>
                 <div class="sosmed-contain">
-                    <i class="hgi hgi-stroke hgi-mail-01"></i><p>ravstudio&build@outlook.co.id</p>
+                    <i class="hgi hgi-stroke hgi-mail-01"></i><p>ravarchitect1@gmail.com</p>
                 </div>
             </div>
             <div class="grafik-footer">
