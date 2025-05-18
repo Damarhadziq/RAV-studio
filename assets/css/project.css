@@ -129,7 +129,7 @@ nav{
     width: 100vw;
     position: relative;
     height: 100vh;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .top-project-contain{
@@ -292,6 +292,8 @@ nav{
     filter: blur(40px);
     z-index: 20;
 }
+
+
 
 /* FOOTER */
 footer{
