@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Gallery</title>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    nav#header {
+      background: linear-gradient(to right, #2c3e50, #336d8c);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-logo .nav-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-logo span {
+      font-size: 2rem;
+      color: #f1c40f;
+      margin-left: 5px;
+    }
+
+    .nav-menu ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav_menu_list .nav_list a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .nav_menu_list .nav_list a:hover,
+    .nav_menu_list .nav_list .nav-link.active-link {
+      color: #f1c40f;
+    }
+
+    .nav_menu_list .nav_list .nav-link.active-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #f1c40f;
+      border-radius: 2px;
+    }
+
+    .nav-button .btn {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-button .btn:hover {
+      background-color: #c0392b;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin: 2rem 0 1rem;
+    }
+
+    .gallery-row {
+  display: flex;
+  flex-wrap: nowrap; /* Supaya tidak pindah ke baris baru */
+  overflow-x: auto;   /* Supaya bisa discroll ke samping */
+  gap: 30px;
+  padding: 2rem;
+}
+
+.gallery-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery-row::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+    .gallery-card {
+      width: 320px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-card:hover {
+      transform: scale(1.02);
+    }
+
+    .image-container {
+      width: 100%;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #34495e;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .edit-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .edit-button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="header">
+    <div class="nav-logo">
+      <p class="nav-name">Admin-Dashboard</p>
+      <span>.</span>
+    </div>
+    <div class="nav-menu" id="myNavMenu">
+      <ul class="nav_menu_list">
+        <li class="nav_list"><a href="#" class="nav-link active-link">Project</a></li>
+        <li class="nav_list"><a href="#" class="nav-link">FAQ</a></li>
+        <li class="nav_list"><a href="#" class="nav-link">Review</a></li>
+      </ul>
+    </div>
+    <div class="nav-button">
+      <a href="#" class="btn">Logout</a>
+    </div>
+  </nav>
+
+  <div class="section-title">Project</div>
+
+  <div class="gallery-row">
+    <!-- Card 1 -->
+    <div class="gallery-card">
+      <div class="image-container">
+        <img src="static/uploads/sample1.jpg" alt="Image 1">
+      </div>
+      <div class="card-content">
+        <div class="card-title">Project A - Pameran</div>
+        <div class="card-description">Dokumentasi kegiatan pameran seni mahasiswa dengan tema keberagaman budaya.</div>
+        <div class="actions">
+          <a href="#" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="gallery-card">
+      <div class="image-container">
+        <img src="static/uploads/sample2.jpg" alt="Image 2">
+      </div>
+      <div class="card-content">
+        <div class="card-title">Project B - Seminar</div>
+        <div class="card-description">Kegiatan seminar nasional bertajuk inovasi teknologi untuk pendidikan masa depan.</div>
+        <div class="actions">
+          <a href="#" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="gallery-card">
+      <div class="image-container">
+        <img src="static/uploads/sample3.jpg" alt="Image 3">
+      </div>
+      <div class="card-content">
+        <div class="card-title">Project C - Lomba</div>
+        <div class="card-description">Kegiatan lomba cerdas cermat antar kelas dengan semangat sportivitas dan kerjasama.</div>
+        <div class="actions">
+          <a href="#" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="gallery-card">
+      <div class="image-container">
+        <img src="static/uploads/sample4.jpg" alt="Image 4">
+      </div>
+      <div class="card-content">
+        <div class="card-title">Project D - Pelatihan</div>
+        <div class="card-description">Pelatihan peningkatan kapasitas guru dalam penggunaan teknologi pembelajaran digital.</div>
+        <div class="actions">
+          <a href="#" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="gallery-card">
+      <div class="image-container">
+        <img src="static/uploads/sample5.jpg" alt="Image 5">
+      </div>
+      <div class="card-content">
+        <div class="card-title">Project E - Bakti Sosial</div>
+        <div class="card-description">Kegiatan bakti sosial mahasiswa di desa terpencil sebagai bentuk pengabdian masyarakat.</div>
+        <div class="actions">
+          <a href="#" class="edit-button">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

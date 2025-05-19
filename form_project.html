@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form Edit Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-container {
+      position: relative;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: transparent;
+      border: none;
+      color: #3498db;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    .form-group input[type="file"] {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #3498db;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <button class="back-button" onclick="window.history.back()">← Kembali</button>
+    
+    <h2>Edit Project</h2>
+    <form action="#" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="projectName">Nama Project</label>
+        <input type="text" id="projectName" name="projectName" placeholder="Masukkan nama project" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Deskripsi Singkat</label>
+        <textarea id="description" name="description" rows="4" placeholder="Tuliskan deskripsi singkat project..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUpload">Upload Gambar</label>
+        <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required />
+      </div>
+
+      <div class="form-group" style="text-align: center;">
+        <input type="submit" value="Simpan Perubahan" />
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

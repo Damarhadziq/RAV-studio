@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FAQ</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        nav#header {
+            background: linear-gradient(to right, #2c3e50, #336d8c);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo .nav-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-logo span {
+            font-size: 2rem;
+            color: #f1c40f;
+            margin-left: 5px;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav_menu_list .nav_list a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav_menu_list .nav_list a:hover,
+        .nav_menu_list .nav_list .nav-link.active-link {
+            color: #f1c40f;
+        }
+
+        .nav_menu_list .nav_list .nav-link.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #f1c40f;
+            border-radius: 2px;
+        }
+
+        .nav-button .btn {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button .btn:hover {
+            background-color: #c0392b;
+        }
+
+        .faq-title {
+            margin: 30px auto;
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .faq-text {
+            flex: 1;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .edit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .edit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+     <nav id="header">
+        <div class="nav-logo">
+            <p class="nav-name">Admin-Dashboard</p>
+            <span>.</span>
+        </div>
+        <div class="nav-menu" id="myNavMenu">
+            <ul class="nav_menu_list">
+                <li class="nav_list"><a href="#" class="nav-link">Project</a></li>
+                <li class="nav_list"><a href="#" class="nav-link active-link">FAQ</a></li>
+                <li class="nav_list"><a href="#" class="nav-link">Review</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <a href="#" class="btn">Logout</a>
+        </div>
+    </nav>
+
+    <h1 class="faq-title">Frequently Asked Questions (FAQ)</h1>
+
+    <!-- FAQ 1 -->
+    <div class="faq-container">
+        <div class="faq-text">
+            <div class="faq-question">Apa itu layanan ini?</div>
+            <div class="faq-answer">Layanan ini adalah platform untuk mengelola galeri dan informasi biodata pengguna.</div>
+        </div>
+        <button class="edit-button">Edit</button>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-container">
+        <div class="faq-text">
+            <div class="faq-question">Bagaimana cara mengunggah gambar?</div>
+            <div class="faq-answer">Klik tombol 'Upload' di halaman Galeri dan pilih gambar yang ingin diunggah.</div>
+        </div>
+        <button class="edit-button">Edit</button>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-container">
+        <div class="faq-text">
+            <div class="faq-question">Siapa yang bisa mengedit biodata?</div>
+            <div class="faq-answer">Hanya admin yang memiliki akses untuk mengedit biodata pengguna.</div>
+        </div>
+        <button class="edit-button">Edit</button>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-container">
+        <div class="faq-text">
+            <div class="faq-question">Bagaimana cara mengubah harga?</div>
+            <div class="faq-answer">Masuk ke menu 'Edit Harga' dan sesuaikan harga sesuai kebutuhan.</div>
+        </div>
+        <button class="edit-button">Edit</button>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="faq-container">
+        <div class="faq-text">
+            <div class="faq-question">Apakah data saya aman?</div>
+            <div class="faq-answer">Kami menjaga keamanan data Anda dengan protokol keamanan terkini.</div>
+        </div>
+        <button class="edit-button">Edit</button>
+    </div>
+
+</body>
+</html>
