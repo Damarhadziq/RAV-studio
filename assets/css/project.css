@@ -23,6 +23,11 @@
 /* ----- SMOOTH SCROLL ----- */
 html{
     scroll-behavior: smooth;
+    overflow: auto;
+}
+
+[data-scroll-container] {
+  height: 100%;
 }
 
 /* ----- CHANGE THE SCROLL BAR DESIGN ----- */
@@ -130,6 +135,7 @@ nav{
     position: relative;
     height: 100vh;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .top-project-contain{
@@ -293,7 +299,311 @@ nav{
     z-index: 20;
 }
 
+/* ars journey */
+.journey-contain{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    max-width: 1320px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    border-radius: 16px;
+    background-image: url('../img/JOURNEY\ BG.jpg');
+    background-position: center;
+    background-size: cover;
+    background-color: #18181863;
+    background-blend-mode: multiply;
+}
 
+.title-journey{
+    color: var(--SECOND-TEXT-COLOR, #F8F6F3);
+    font-family: Barlow;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    width: max-content;
+}
+
+.journey-box{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.journey-box-contain{
+    width: 228px;
+    height: 228px;
+    overflow: hidden;
+    padding: 14px;border-radius: 10px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(7px);
+    align-items: center;
+    justify-content: center;
+}
+
+.journey-box-img img{
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    filter: brightness(90%);
+}
+
+.journey-btn {
+    color: #ECECEC;
+    font-family: Barlow;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    display: inline-flex;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #ECECEC;
+}
+
+ /* people-feel  */
+ .people-feel{
+    margin-top: 100px;
+    width: 100%;
+    height: 100%;
+    padding-inline: 60px;
+ }
+.people-feel-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.people-feel-text{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 718px;
+}
+
+.top-text-feel p{
+    color: #FFF;
+    font-family: Barlow;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+}
+
+.bottom-text-feel p{
+    font-family: "Plus Jakarta Sans";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    letter-spacing: -1.92px;
+    background: linear-gradient(91deg, var(--FIRST-TEXT-COLOR, #E8DCC5) 15.33%, #F5F5F5 93.88%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.people-feel-img{
+    align-items: center;
+    max-width: 540px;
+    overflow: hidden;
+    height: 650px;
+}
+
+/* first-project */
+.first-project{
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    padding-inline: 60px;
+}
+
+.first-project-contain{
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-first-project{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-first-project{
+    flex-direction: row;
+    gap: 10px;
+    color: var(--text-second-color);
+    align-items: center;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.main-title{
+    color: #FFF;
+    font-family: Barlow;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.48px;
+}
+
+.label-first-project{
+    border: 1.5px solid #ECECEC;
+    display: flex;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #ECECEC;
+    font-family: Barlow;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.2px;
+}
+
+.subtitle-first-project p{
+    color: #ECECEC;
+    font-family: Geologica;
+    font-size: 24px;
+    margin-top: 8px;
+    color: #ECECEC;
+    font-style: normal;
+    margin-bottom: 42px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.32px;
+}
+
+.first-project-main{
+    display: flex;
+    flex-direction: row;
+    width: 100%; 
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.img-first-project{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-contain-project{
+    width: 900px;
+    height: 380px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background-image: url('../img/FIRST\ PROJECT\ IMG.jpg');
+    background-color: #1818184a;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-contain-project img{
+    width: 86px;
+    position: absolute;
+    bottom: 0%;
+    right: 2%;
+}
+
+.summary-project{
+    color: #ECECEC;
+    font-family: Geologica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    max-width: 900px;
+    margin-top: 10px;
+}
+
+.deskripsi-first-project{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: column;
+    display: inline-flex;
+    padding: 24px 22px 0px 24px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 55px;
+}
+
+.deskripsi-contain{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: #FFFFFF;
+}
+
+.deskripsi-child{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 4px;
+}
+
+.deskripsi-child .title-deskripsi{
+    color: #ebebeb;
+    font-family: Barlow;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.2px;
+}
+
+.deskripsi-child .contain-deskripsi{
+    color: #FFF;
+    font-family: Geologica;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}
+
+.btn-deskripsi-project{
+    display: flex;
+    padding: 10px 14px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #ECECEC;
+    color: var(--FIRST-TEXT-COLOR, #E8DCC5);
+    text-decoration: none;
+    font-family: Geologica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.2px;
+}
 
 /* FOOTER */
 footer{

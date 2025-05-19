@@ -10,6 +10,8 @@
     <!-- --------- CSS ---------- -->
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
     <!-- --------- FAVICON ---------- -->
     <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     
@@ -21,7 +23,7 @@
     <title>RAV Studio & Build</title>
 </head>
 <body>
-   <div class="container">
+   <div class="container" data-scroll-container>
     <!-- --------------- HEADER --------------- -->
       <nav id="header">
         <div class="nav-logo">
@@ -48,10 +50,6 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="nav-menu-btn">
-            <i id="menu-icon" class="uil uil-bars" onclick="toggleMenu()"></i>
-            <i id="close-icon" class="uil uil-multiply" style="display: none;" onclick="toggleMenu()"></i>
-        </div> -->
       </nav>
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
@@ -177,7 +175,7 @@
                         </div>
                         <div class="about-us-text">
                             <div class="about-deskripsi">
-                                <p>At RAV Studio & Build, we believe that architecture is more than just structures—it’s about crafting timeless spaces that inspire and elevate everyday living. With a commitment to innovation, sustainability, and aesthetic excellence, we blend art and functionality to create designs that stand the test of time.
+                                <p>At RAV Studio & Build, we believe that architecture is more than just structures—it's about crafting timeless spaces that inspire and elevate everyday living. With a commitment to innovation, sustainability, and aesthetic excellence, we blend art and functionality to create designs that stand the test of time.
                                 Our team of passionate architects and designers specializes in delivering bespoke solutions for residential, commercial, and urban projects. Every detail is meticulously considered, ensuring that our creations not only meet but exceed expectations.</p>
                             </div>
                         </div>
@@ -428,12 +426,12 @@
                                 <p>Benny Tan</p>
                             </div>
                             <div class="client-project">
-                                <p>Owner of Tan’s Urban Resto</p>
+                                <p>Owner of Tan's Urban Resto</p>
                             </div>
                         </div>
                     </div>
                     <div class="main-containt-testi">
-                        <p>RAV’s work quality is outstanding, with clean details and smooth communication throughout. </p>
+                        <p>RAV's work quality is outstanding, with clean details and smooth communication throughout. </p>
                     </div>
                 </div>
                 <div class="card-testi-content">
@@ -575,6 +573,13 @@
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
+
+    <script src="assets/js/locomotive-scroll.min.js"></script>
+    
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/script.js"></script>
 

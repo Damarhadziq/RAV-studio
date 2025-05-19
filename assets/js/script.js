@@ -14,6 +14,12 @@
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
+
+const scroll = new LocomotiveScroll({
+      el: document.querySelector('[data-scroll-container]'),
+      smooth: true
+    });
+  
 document.addEventListener("DOMContentLoaded", () => {
   var typingEffect = new Typed(".typedText1", {
     strings: ["Dreams", "Futures","Visions"],
