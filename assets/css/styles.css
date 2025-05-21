@@ -25,7 +25,7 @@
 html{
     scroll-behavior: smooth;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 [data-scroll-container] {
   min-height: 100vh;
@@ -135,7 +135,7 @@ nav{
     font-family: 'geologica';
     min-height: 100vh;
     position: relative; 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .featured-box{
     display: flex;

@@ -10,6 +10,8 @@
     <!-- --------- CSS ---------- -->
     <link rel="stylesheet" href="assets/css/about.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
     <!-- --------- FAVICON ---------- -->
     <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
 
@@ -21,7 +23,7 @@
     <title>RAV Studio & Build</title>
 </head>
 <body>
-   <div class="container">
+   <div class="container" data-scroll-container>
     <!-- --------------- HEADER --------------- -->
       <nav id="header">
         <div class="nav-logo">
@@ -53,7 +55,7 @@
     <main class="wrapper">
        <!-- -------------- OPENING ABOUT ---------------- -->
        <div class="about" id="about">
-        <section class="opening-about">
+        <section class="opening-about" data-scroll-section>
             <div class="opening-about-containt">
                 <div class="mid-contain">
                     <div class="short-text">
@@ -85,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#marquee" class="btn-marquee">
+                <a href="#marquee" class="btn-marquee" data-scroll-to>
                     <div class="btn-explore">
                         <p>Explore Now</p>
                     </div>
@@ -143,11 +145,11 @@
                 </div>
             </div>
         </section>
-       </div>
+        </div>
 
         <!-- -------------- ABOUT US ---------------- -->
-        <section class="about-us" id="about-us">
-            <div class="about-us-content">
+        <section class="about-us" data-scroll-section>
+            <div class="about-us-content" data-scroll data-scroll-speed="2">
                 <div class="bg-about">
                         <img src="assets/img/710fe7c6f6c6e89df3060695f62ff610.jpeg" alt="">
                     </div>
@@ -166,31 +168,31 @@
          </section>
 
         <!-- -------------- PARTNERSHIP ---------------- -->
-         <section class="partnership">
-            <div class="partnership-content">
-                <div class="partnership-img">
+         <section class="partnership" data-scroll-section>
+            <div class="partnership-content" data-scroll>
+                <div class="partnership-img" data-scroll data-scroll-delay="0.018" data-scroll-speed="3">
                     <img src="assets/img/Waskita_Karya.svg.png" alt="Waskita Karya">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.02" data-scroll-speed="3">
                     <img src="assets/img/9ee8f4998ab4543f70a43de78a41b676.png" alt="DJARUM">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.04" data-scroll-speed="3">
                     <img src="assets/img/SCC.BK_BIG-afaf9b39.png" alt="SCC">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.06" data-scroll-speed="3">
                     <img src="assets/img/eeb0edf2975364ee5755ab29c1bf176f.png" alt="POCARI SWEAT">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.08" data-scroll-speed="3">
                     <img src="assets/img/Dulux-Logo.png" alt="DULUX">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.1" data-scroll-speed="3">
                     <img src="assets/img/MowilexPremiumPaints.webp" alt="MOWILEX">
                 </div>
             </div>
          </section>
 
          <!-- -------------- THE FOUNDER ---------------- -->
-         <section class="founder">
+         <section class="founder" data-scroll-section>
             <div class="founder-card">
               <div class="founder-bg">
                 <img src="assets/img/FOUNDER-BG.jpg" alt="Founder Background">
@@ -217,9 +219,9 @@
           
 
         <!-- -------------- OTHER ELEMEN ---------------- -->
-         <section class="other-element">
+         <section class="other-element" data-scroll-section>
             <div class="inovasi">
-                <div class="inovasi-text">
+                <div class="inovasi-text" data-scroll data-scroll-speed="2">
                     <div class="title-inovasi">
                         <p>Building the Future with Creativity</p>
                     </div>
@@ -227,28 +229,28 @@
                         <p>Through a collaborative and explorative approach, we continuously innovate to craft designs that remain relevant in an ever-evolving world. We don't just construct buildings—we create experiences, emotions, and identities within every architectural detail.</p>
                     </div>
                 </div>
-                <div class="inovasi-contain">
-                    <div class="inovasi-box">
+                <div class="inovasi-contain" data-scroll>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.02" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-idea-01"></i>
                         <p>Innovative Design Approach</p>
                     </div>
-                    <div class="inovasi-box">
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.04" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-leaf-01"></i>
                         <p>Sustainability & Eco-Friendly Solutions</p>
                     </div>
-                    <div class="inovasi-box">
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.06" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-agreement-01"></i>
                         <p>Client-Centric Collaboration</p>
                     </div>
-                    <div class="inovasi-box">
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.08" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-artboard"></i>
                         <p>Attention to Detail & Craftsmanship</p>
                     </div>
-                    <div class="inovasi-box">
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.14" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-building-05"></i>
                         <p>Timeless & Impactful Spaces</p>
                     </div>
-                    <div class="inovasi-box">
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.2" data-scroll-speed="6">
                         <i class="hgi hgi-stroke hgi-nano-technology"></i>
                         <p>Seamless Integration of Technology</p>
                     </div>
@@ -257,7 +259,7 @@
          </section>
 
         <!-- -------------- TESTIMONIAL ---------------- -->
-        <section class="testimoni">
+        <section class="testimoni" data-scroll-section>
             <div class="testimoni-content">
                 <div class="card-testi-content">
                     <div class="card-title">
@@ -367,7 +369,7 @@
             </div>
          </section>
          
-
+        
         <!-- -------------- FORM ---------------- -->
          <!-- <section class="form">
             <div class="form-contain">
@@ -410,7 +412,7 @@
     </main>
 
     <!-- --------------- FOOTER --------------- -->
-    <footer>
+    <footer data-scroll-section>
         <div class="left-footer">
             <div class="logo-footer">
                 <img src="assets/img/RAV LOGO.png" alt="RAV LOGO">
@@ -447,6 +449,14 @@
 
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+
+    <script nomodule src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
+
+    <script src="assets/js/locomotive-scroll.min.js"></script>
 
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/about.js"></script>
