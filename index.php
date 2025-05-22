@@ -9,7 +9,7 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-$result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
+// $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
 $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY created_at ASC");
 $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
 
@@ -27,6 +27,8 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <!-- --------- CSS ---------- -->
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
     <!-- --------- FAVICON ---------- -->
     <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     
@@ -38,7 +40,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <title>RAV Studio & Build</title>
 </head>
 <body>
-   <div class="container">
+   <div class="container" data-scroll-container>
     <!-- --------------- HEADER --------------- -->
       <nav id="header">
         <div class="nav-logo">
@@ -70,7 +72,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <main class="wrapper">
        <!-- -------------- FEATURED BOX ---------------- -->
        <div class="home" id="home">
-           <section class="featured-box">
+           <section class="featured-box" data-scroll-section>
                <div class="featured-text">
                 <div class="video-bg">
                     <video autoplay muted loop id="bg-video">
@@ -78,7 +80,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                       </video>
                 </div>
                    <div class="header-text" id="header-text">
-                       <div class="header">
+                       <div class="header" data-scroll data-scroll-speed="3" data-scroll-position="top">
                            <span>Building</span>
                            <span class="typedText1">Space</span>
                            <div class="sec-head">
@@ -86,20 +88,20 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                                <span class="typedText2">Stories.</span>
                            </div>
                        </div>
-                       <div class="deskripsi">
+                       <div class="deskripsi" data-scroll data-scroll-speed="4" data-scroll-position="top">
                            <p>We deliver architectural designs that are not only functional, but also aesthetic and sustainable. Find space solutions that are elegant, modern and aligned with your vision.</p>
                        </div>
-                       <a href="#crafting" class="btn-home">
+                       <a href="#crafting" class="btn-home" data-scroll data-scroll-speed="6" data-scroll-position="top" data-scroll-to>
                            <div class="GIT-btn">
                                <p>Get in Touch</p>
                            </div>
                        </a>
-                       <div class="social_icons">
+                       <div class="social_icons" data-scroll data-scroll-speed="5" data-scroll-position="top">
                            <div class="icon">
                                <a href="https://www.instagram.com/dmrhdz.iq" target="_blank" rel="noopener noreferrer">
                                    <i class="hgi hgi-stroke hgi-instagram"></i>
                                </a>
-                               <span    class="tooltip">instagram</span>
+                               <span class="tooltip">instagram</span>
                            </div>
                            <div class="icon">
                                <a href="https://www.facebook.com/@indra.alto1/?mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noopener noreferrer">
@@ -121,7 +123,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                            </div>
                        </div>
                    </div>
-                   <div class="card-confident">
+                   <div class="card-confident" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-4" data-scroll-position="top">
                     <div class="card-right">
                         <div class="confident-text">
                             <p><i class="hgi hgi-stroke hgi-compass-01"></i> 120+ Project</p>
@@ -139,9 +141,9 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
            </section>
         
         <!-- -------------- CRAFTING BOX ---------------- -->
-           <section class="crafting" id="crafting">
+           <section class="crafting" id="crafting" data-scroll-section>
             <div class="crafting-contain">
-                <div class="header-craft">
+                <div class="header-craft" data-scroll data-scroll-delay="0.04" data-scroll-speed="4" data-scroll-offset="1">
                     <div class="header-craft-text">
                         <span>Crafting</span>
                         <span class="sec">Space,</span>
@@ -152,7 +154,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                         <p>Every corner has meaning, every element has purpose. We deliver design that blends with lifestyle, prioritizing aesthetics, comfort and functionality.</p>
                     </div>
                 </div>
-                <div class="craft-content">
+                <div class="craft-content"data-scroll data-scroll-delay="0.04" data-scroll-speed="6">
                     <div class="content-box">
                         <div class="content-box-img">
                             <img src="assets/img/c394151b0fef0713dad60f35cdb4529a.jpeg" alt="Serenity in Simplicity">
@@ -179,8 +181,8 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
            </section>
 
         <!-- -------------- ABOUT US ---------------- -->
-        <section class="about-us">
-            <div class="about-us-content">
+        <section class="about-us" data-scroll-section>
+            <div class="about-us-content" data-scroll data-scroll-speed="2">
                 <div class="bg-about">
                         <img src="assets/img/710fe7c6f6c6e89df3060695f62ff610.jpeg" alt="">
                     </div>
@@ -190,151 +192,57 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                         </div>
                         <div class="about-us-text">
                             <div class="about-deskripsi">
-                                <p>At RAV Studio & Build, we believe that architecture is more than just structures—it’s about crafting timeless spaces that inspire and elevate everyday living. With a commitment to innovation, sustainability, and aesthetic excellence, we blend art and functionality to create designs that stand the test of time.
+                                <p>At RAV Studio & Build, we believe that architecture is more than just structures—it's about crafting timeless spaces that inspire and elevate everyday living. With a commitment to innovation, sustainability, and aesthetic excellence, we blend art and functionality to create designs that stand the test of time.
                                 Our team of passionate architects and designers specializes in delivering bespoke solutions for residential, commercial, and urban projects. Every detail is meticulously considered, ensuring that our creations not only meet but exceed expectations.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-        </section>
+         </section>
 
         <!-- -------------- PARTNERSHIP ---------------- -->
-         <section class="partnership">
-            <div class="partnership-content">
-                <div class="partnership-img">
+         <section class="partnership" data-scroll-section>
+            <div class="partnership-content" data-scroll>
+                <div class="partnership-img" data-scroll data-scroll-delay="0.018" data-scroll-speed="3">
                     <img src="assets/img/Waskita_Karya.svg.png" alt="Waskita Karya">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.02" data-scroll-speed="3">
                     <img src="assets/img/9ee8f4998ab4543f70a43de78a41b676.png" alt="DJARUM">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.04" data-scroll-speed="3">
                     <img src="assets/img/SCC.BK_BIG-afaf9b39.png" alt="SCC">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.06" data-scroll-speed="3">
                     <img src="assets/img/eeb0edf2975364ee5755ab29c1bf176f.png" alt="POCARI SWEAT">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.08" data-scroll-speed="3">
                     <img src="assets/img/Dulux-Logo.png" alt="DULUX">
                 </div>
-                <div class="partnership-img">
+                <div class="partnership-img" data-scroll data-scroll-delay="0.1" data-scroll-speed="3">
                     <img src="assets/img/MowilexPremiumPaints.webp" alt="MOWILEX">
                 </div>
             </div>
-            <div class="elevating">
-                <div class="elev-img">
-                    <img src="./assets/img/6780.jpg" alt="">
-                </div>
-                <div class="elev-text">
-                    <div class="elev-header">
-                        <p>Elevating Spaces with Timeless Elegance</p>
-                    </div>
-                    <div class="elev-deskripsi">
-                        <p>Bringing harmony between aesthetics, function, and character of the space.</p>
-                    </div>
-                </div>
-            </div>
          </section>
 
-        <!-- -------------- OTHER ELEMEN ---------------- -->
-         <section class="quality">
-            <div class="quality-us">
-                <div class="quality-text">
-                    <div class="first-text">
-                        <p><hr>Building with Precision, Designing with Passion.</p>
+        <!-- -------------- PEOPLE FEEL ---------------- -->
+         <section class="people-feel" data-scroll-section>
+            <div class="people-feel-contain">
+                <div class="people-feel-text">
+                    <div class="top-text-feel" data-scroll data-scroll-speed="4">
+                        <p>We don't just build structures</p>
                     </div>
-                    <div class="sec-text">
-                        <div class="sec-text-content">
-                            <span>Harmony in</span>
-                            <span class="sec">Design</span>
-                        </div>
-                        <div class="sec-text-content">
-                            <span>Elegance in</span>
-                            <span class="sec">Details.</span>
-                        </div>
-                    </div>
-                    <div class="third-text">
-                        <p>Beauty is not just about form, but also about how the space speaks. Every element in our designs is designed to create the perfect balance, aesthetics and functionality.</p>
-                    </div>
-                    <div class="quality-box">
-                        <div class="quality-box-content">
-                            <i class="hgi hgi-stroke hgi-blush-brush-02"></i>
-                            <p>Elegant & Functional Design</p>
-                        </div>
-                        <div class="quality-box-content">
-                            <i class="hgi hgi-stroke hgi-cube"></i>
-                            <p>Quality Materials & Construction</p>
-                        </div>
-                        <div class="quality-box-content">
-                            <i class="hgi hgi-stroke hgi-two-finger-05"></i>
-                            <p>Personalization & Exclusivity</p>
-                        </div>
-                        <div class="quality-box-content">
-                            <i class="hgi hgi-stroke hgi-briefcase-03"></i>
-                            <p>Professional & Experienced</p>
-                        </div>
-                    </div>
-                    <div class="quality-btn">
-                        <a href="project.html">Explore Project <i class="hgi hgi-stroke hgi-arrow-right-02"></i></a>
+                    <div class="bottom-text-feel" data-scroll data-scroll-delay="0.04" data-scroll-speed="-4" data-scroll-offset="0.05">
+                        <p>— we shape how people feel within them.</p>
                     </div>
                 </div>
-                <div class="quality-img">
-                    <img src="./assets/img/3a6a930c190e93b374338f4c193226cd.jpeg" alt="">
+                <div class="people-feel-img" data-scroll data-scroll-speed="1">
+                    <img src="assets/img/PEOPLE FEEL.jpg" alt="people feel">
                 </div>
             </div>
-         </section>
-
-        <!-- -------------- SHORT PROJECT ---------------- -->
-         <section class="short-project">
-            <div class="project-short-contain">
-                <div class="project-text">
-                    <div class="main-title">
-                        <div class="first-title">
-                            <span class="first-color">Explore Boundless</span>
-                            <span class="sec-color">Creativity</span>
-                        </div>
-                        <div class="sec-title">
-                            <span>in Every</span>
-                            <span class="sec-color">Design</span>
-                        </div>
-                    </div>
-                    <div class="deskripsi-title">
-                        <p id="typewriter-text">Every project is a journey towards uniqueness. Explore the innovative designs we create with precision and rigor. </p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="opening-project">
-                    <div class="left-opening">
-                        <p>Recent Project from RAV Studio & Build</p>
-                    </div>
-                    <div class="right-opening">
-                        <a href="">
-                            <p>See More Project <i class="hgi hgi-stroke hgi-arrow-right-01"></i></p>
-                        </a>
-                    </div>
-                </div>
-                <!-- -------------- Recent Project ---------------- -->
-                <div class="project-content">
-                    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                    <div class="main-content">
-                        <a href="">
-                        <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['title']) ?>">
-                        <div class="project-text-short">
-                            <div class="title-project">
-                                <p><?= htmlspecialchars($row['title']) ?></p>
-                            </div>
-                            <div class="deskripsi-project">
-                                <p><?= htmlspecialchars($row['subtitle']) ?></p>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <?php endwhile; ?>
-                </div>
-            </div>
-         </section>
+        </section>
 
         <!-- -------------- TESTIMONIAL ---------------- -->
-        <section class="testimoni">
+         <section class="testimoni" data-scroll-section>
             <div class="testimoni-content">
                 <?php while ($row = mysqli_fetch_assoc($clientReviews)) : ?>
                     <div class="card-testi-content">
@@ -359,27 +267,25 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
             <div class="bg-grafik">
                 <img src="assets/img/grafik bg.png" alt="grafik-bg">
             </div>
-        </section>
+         </section>
 
         <!-- -------------- FAQ ---------------- -->
-        <section class="faq" id="faq">
+         <section class="faq" id="faq" data-scroll-section>
             <div class="faq-content">
                 <div class="faq-title">
                     <p>Frequently Ask Question</p>
                 </div>
-
                 <?php while ($row = mysqli_fetch_assoc($faqResult)): ?>
-                    <div class="card-faq-content">
-                        <div class="question">
-                            <p><?= htmlspecialchars($row['question']) ?></p>
-                            <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                        </div>
-                        <div class="answer">
-                            <p><?= nl2br(htmlspecialchars($row['answer'])) ?></p>
-                        </div>
+                <div class="card-faq-content">
+                    <div class="question">
+                        <p><?= htmlspecialchars($row['question']) ?></p>
+                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
                     </div>
+                    <div class="answer">
+                        <p><?= nl2br(htmlspecialchars($row['answer'])) ?></p>
+                    </div>
+                </div>
                 <?php endwhile; ?>
-
             </div>
             <div class="grafik-bottom">
                 <img src="assets/img/grafik2.png" alt="">
@@ -388,14 +294,11 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                 </div>
             </div>
         </section>
-
-        <?php mysqli_close($conn); ?>
-
-        </div>
     </main>
+    
 
     <!-- --------------- FOOTER --------------- -->
-    <footer>
+    <footer data-scroll-section>
         <div class="left-footer">
             <div class="logo-footer">
                 <img src="assets/img/RAV LOGO.png" alt="RAV LOGO">
@@ -433,8 +336,13 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!-- ----- GSAP ----- -->
-    <script src="assets/js/gsap.min.js"></script>
+    <!-- ----- LOCOMOTIVE SCROLL ----- -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+    <script nomodule src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
+
+    <script src="assets/js/locomotive-scroll.min.js"></script>
     
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/script.js"></script>
