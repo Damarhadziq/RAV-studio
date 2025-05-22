@@ -9,10 +9,7 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
 $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY created_at ASC");
-$faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
-
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +22,13 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
 
     <!-- --------- CSS ---------- -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/about.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
 
     <!-- --------- FAVICON ---------- -->
     <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
-    
+
     <!-- --------- FAVICON ---------- -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     
@@ -50,11 +47,11 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
-                    <a href="#home" class="nav-link active-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="about.php" class="nav-link">About</a>
+                    <a href="#about" class="nav-link active-link">About</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -70,115 +67,99 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
       </nav>
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
-       <!-- -------------- FEATURED BOX ---------------- -->
-       <div class="home" id="home">
-           <section class="featured-box" data-scroll-section>
-               <div class="featured-text">
-                <div class="video-bg">
-                    <video autoplay muted loop id="bg-video">
-                        <source src="video/ASSET VIDEO HOME.mp4" type="video/mp4">
-                      </video>
-                </div>
-                   <div class="header-text" id="header-text">
-                       <div class="header" data-scroll data-scroll-speed="3" data-scroll-position="top">
-                           <span>Building</span>
-                           <span class="typedText1">Space</span>
-                           <div class="sec-head">
-                               <span>Creating</span>
-                               <span class="typedText2">Stories.</span>
-                           </div>
-                       </div>
-                       <div class="deskripsi" data-scroll data-scroll-speed="4" data-scroll-position="top">
-                           <p>We deliver architectural designs that are not only functional, but also aesthetic and sustainable. Find space solutions that are elegant, modern and aligned with your vision.</p>
-                       </div>
-                       <a href="#crafting" class="btn-home" data-scroll data-scroll-speed="6" data-scroll-position="top" data-scroll-to>
-                           <div class="GIT-btn">
-                               <p>Get in Touch</p>
-                           </div>
-                       </a>
-                       <div class="social_icons" data-scroll data-scroll-speed="5" data-scroll-position="top">
-                           <div class="icon">
-                               <a href="https://www.instagram.com/dmrhdz.iq" target="_blank" rel="noopener noreferrer">
-                                   <i class="hgi hgi-stroke hgi-instagram"></i>
-                               </a>
-                               <span class="tooltip">instagram</span>
-                           </div>
-                           <div class="icon">
-                               <a href="https://www.facebook.com/@indra.alto1/?mibextid=rS40aB7S9Ucbxw6v" target="_blank" rel="noopener noreferrer">
-                                   <i class="hgi hgi-stroke hgi-facebook-02"></i>
-                               </a>
-                               <span class="tooltip">facebook</span>
-                           </div>
-                           <div class="icon">
-                               <a href="" target="_blank" rel="noopener noreferrer">
-                                   <i class="hgi hgi-stroke hgi-whatsapp"></i>
-                               </a>
-                               <span class="tooltip">whatsapp</span>
-                           </div>
-                           <div class="icon">
-                               <a href="" target="_blank" rel="noopener noreferrer">
-                                   <i class="hgi hgi-stroke hgi-mail-01"></i>
-                               </a>
-                               <span class="tooltip">email</span>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="card-confident" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-4" data-scroll-position="top">
-                    <div class="card-right">
-                        <div class="confident-text">
-                            <p><i class="hgi hgi-stroke hgi-compass-01"></i> 120+ Project</p>
-                        </div>
-                        <div class="confident-text">
-                            <p><i class="hgi hgi-stroke hgi-agreement-02"></i> 50+ Client</p>
-                        </div>
-                        <div class="confident-text">
-                            <p><i class="hgi hgi-stroke hgi-scroll"></i> 4 Years Experience</p>
-                        </div>
+       <!-- -------------- OPENING ABOUT ---------------- -->
+       <div class="about" id="about">
+        <section class="opening-about" data-scroll-section>
+            <div class="opening-about-containt">
+                <div class="mid-contain">
+                    <div class="short-text">
+                        <p>Our Story, Our Vision</p>
                     </div>
-                   </div>
-               </div>
-              </div>
-           </section>
-        
-        <!-- -------------- CRAFTING BOX ---------------- -->
-           <section class="crafting" id="crafting" data-scroll-section>
-            <div class="crafting-contain">
-                <div class="header-craft" data-scroll data-scroll-delay="0.04" data-scroll-speed="4" data-scroll-offset="1">
-                    <div class="header-craft-text">
-                        <span>Crafting</span>
-                        <span class="sec">Space,</span>
-                        <span>Elevating</span>
-                        <span class="sec">Experiences</span>
-                    </div>
-                    <div class="deskripsi-craft">
-                        <p>Every corner has meaning, every element has purpose. We deliver design that blends with lifestyle, prioritizing aesthetics, comfort and functionality.</p>
+                    <div class="overlay-four-img">
+                        <div class="four-image">
+                            <div class="image-box">
+                                <img src="assets/img/four-img1.jpg" alt="image1">
+                            </div>
+                            <div class="image-box">
+                                <img src="assets/img/four-img2.jpg" alt="image2">
+                            </div>
+                            <div class="image-box">
+                                <img src="assets/img/four-img3.jpg" alt="image3">
+                            </div>
+                            <div class="image-box">
+                                <img src="assets/img/four-img4.jpg" alt="image4">
+                            </div>
+                        </div>
+                        <div class="title-about">
+                            <div class="top-title">
+                                <span>How We Transform Spaces into </span>
+                            </div>
+                            <div class="bottom-title">
+                                <span>Timeless</span>
+                                <span class="Masterpieces">Masterpieces</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="craft-content"data-scroll data-scroll-delay="0.04" data-scroll-speed="6">
-                    <div class="content-box">
-                        <div class="content-box-img">
-                            <img src="assets/img/c394151b0fef0713dad60f35cdb4529a.jpeg" alt="Serenity in Simplicity">
-                        </div>
-                        <div class="header-box">Serenity in Simplicity</div>
-                        <div class="deskripsi-box">Soothing simplicity, minimalism with warmth.</div>
+                <a href="#marquee" class="btn-marquee" data-scroll-to>
+                    <div class="btn-explore">
+                        <p>Explore Now</p>
                     </div>
-                    <div class="content-box">
-                        <div class="content-box-img">
-                            <img src="./assets/img/318074a8eff42c6546322137dc8e65b5.jpeg" alt="Bold Elegance">
+                </a>
+                <div class="about-bg">
+                    <img src="assets/img/bg about.png" alt="bg-about">
+                </div>
+                <div class="marquee" id="marquee">
+                    <div class="marquee">
+                        <div class="marquee-left">
+                          <div class="marquee-content">
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                          </div>
+                          <div class="marquee-content">
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                          </div>
                         </div>
-                        <div class="header-box">Bold Elegance</div>
-                        <div class="deskripsi-box">The contrast is luxurious and full of character.</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="content-box-img">
-                            <img src="assets/img/70586fc9482b248879d9a82a98f47290.jpeg" alt="Harmonious Living">
+                        <div class="marquee-right">
+                          <div class="marquee-content">
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                          </div>
+                          <div class="marquee-content">
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Where Creativity Meets Functionality</p>
+                            <img src="assets/img/Frame 308.svg" alt="">
+                            <p>Building Beyond Structures</p>
+                          </div>
                         </div>
-                        <div class="header-box">Harmonious Living</div>
-                        <div class="deskripsi-box">A balance of comfortable, and lively design.</div>
                     </div>
                 </div>
             </div>
-           </section>
+        </section>
+        </div>
 
         <!-- -------------- ABOUT US ---------------- -->
         <section class="about-us" data-scroll-section>
@@ -224,25 +205,75 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
             </div>
          </section>
 
-        <!-- -------------- PEOPLE FEEL ---------------- -->
-         <section class="people-feel" data-scroll-section>
-            <div class="people-feel-contain">
-                <div class="people-feel-text">
-                    <div class="top-text-feel" data-scroll data-scroll-speed="4">
-                        <p>We don't just build structures</p>
+         <!-- -------------- THE FOUNDER ---------------- -->
+         <section class="founder" data-scroll-section>
+            <div class="founder-card">
+              <div class="founder-bg">
+                <img src="assets/img/FOUNDER-BG.jpg" alt="Founder Background">
+              </div>
+              <div class="founder-content">
+                <div class="top-text-founder">
+                  <p class="title-founder">The Founder</p>
+                </div>
+                <div class="founder-logo">
+                  <img src="assets/img/RAV LOGO.png" alt="RAV Logo">
+                </div>
+                <a href="https://www.instagram.com/azizahrara?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                    <div class="founder-information">
+                      <p class="name-founder">Azizah Rara</p>
+                      <p class="deskripsi-information">Founder and Owner of RAV Studio & Build</p>
                     </div>
-                    <div class="bottom-text-feel" data-scroll data-scroll-delay="0.04" data-scroll-speed="-4" data-scroll-offset="0.05">
-                        <p>— we shape how people feel within them.</p>
+                </a>
+                <div class="founder-img">
+                  <img src="assets/img/founder.png" alt="Rara Everlyn">
+                </div>
+              </div>
+            </div>
+          </section>
+          
+
+        <!-- -------------- OTHER ELEMEN ---------------- -->
+         <section class="other-element" data-scroll-section>
+            <div class="inovasi">
+                <div class="inovasi-text" data-scroll data-scroll-speed="2">
+                    <div class="title-inovasi">
+                        <p>Building the Future with Creativity</p>
+                    </div>
+                    <div class="deskripsi-inovasi">
+                        <p>Through a collaborative and explorative approach, we continuously innovate to craft designs that remain relevant in an ever-evolving world. We don't just construct buildings—we create experiences, emotions, and identities within every architectural detail.</p>
                     </div>
                 </div>
-                <div class="people-feel-img" data-scroll data-scroll-speed="1">
-                    <img src="assets/img/PEOPLE FEEL.jpg" alt="people feel">
+                <div class="inovasi-contain" data-scroll>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.02" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-idea-01"></i>
+                        <p>Innovative Design Approach</p>
+                    </div>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.04" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-leaf-01"></i>
+                        <p>Sustainability & Eco-Friendly Solutions</p>
+                    </div>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.06" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-agreement-01"></i>
+                        <p>Client-Centric Collaboration</p>
+                    </div>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.08" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-artboard"></i>
+                        <p>Attention to Detail & Craftsmanship</p>
+                    </div>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.14" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-building-05"></i>
+                        <p>Timeless & Impactful Spaces</p>
+                    </div>
+                    <div class="inovasi-box" data-scroll data-scroll-delay="0.2" data-scroll-speed="6">
+                        <i class="hgi hgi-stroke hgi-nano-technology"></i>
+                        <p>Seamless Integration of Technology</p>
+                    </div>
                 </div>
             </div>
-        </section>
+         </section>
 
         <!-- -------------- TESTIMONIAL ---------------- -->
-         <section class="testimoni" data-scroll-section>
+        <section class="testimoni" data-scroll-section>
             <div class="testimoni-content">
                 <?php while ($row = mysqli_fetch_assoc($clientReviews)) : ?>
                     <div class="card-testi-content">
@@ -267,26 +298,6 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
             <div class="bg-grafik">
                 <img src="assets/img/grafik bg.png" alt="grafik-bg">
             </div>
-         </section>
-
-        <!-- -------------- FAQ ---------------- -->
-         <section class="faq" id="faq" data-scroll-section>
-            <div class="faq-content">
-                <div class="faq-title">
-                    <p>Frequently Ask Question</p>
-                </div>
-                <?php while ($row = mysqli_fetch_assoc($faqResult)): ?>
-                <div class="card-faq-content">
-                    <div class="question">
-                        <p><?= htmlspecialchars($row['question']) ?></p>
-                        <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-                    </div>
-                    <div class="answer">
-                        <p><?= nl2br(htmlspecialchars($row['answer'])) ?></p>
-                    </div>
-                </div>
-                <?php endwhile; ?>
-            </div>
             <div class="grafik-bottom">
                 <img src="assets/img/grafik2.png" alt="">
                 <div class="deskripsi-grafik">
@@ -295,7 +306,6 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
             </div>
         </section>
     </main>
-    
 
     <!-- --------------- FOOTER --------------- -->
     <footer data-scroll-section>
@@ -336,16 +346,16 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!-- ----- LOCOMOTIVE SCROLL ----- -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
     <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+
     <script nomodule src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
 
     <script src="assets/js/locomotive-scroll.min.js"></script>
-    
-    <!-- ----- MAIN JS ----- -->
-    <script src="assets/js/script.js"></script>
 
+    <!-- ----- MAIN JS ----- -->
+    <script src="assets/js/about.js"></script>
+    
 </body>
 </html>
