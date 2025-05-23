@@ -507,10 +507,10 @@ nav{
     height: 40.625rem;
 }
 .testimoni-content{
+    padding-inline: 60px;
     justify-content: center;
     align-items: center;
     margin: auto;
-    /* position: absolute; */
     display: flex;
     flex-wrap: wrap;
     overflow: visible;
@@ -787,6 +787,15 @@ footer{
     color: #BCBCBC;
 }
 
+@media (max-width: 1388px) {
+    .card-testi-content{
+        width: 36rem;
+    }
+    .bottom-text-feel p{
+        font-size: 5rem;
+    }
+}
+
 @media (max-width: 1280px) {
   .bottom-text-feel p{
     font-size: 4rem;
@@ -794,13 +803,8 @@ footer{
   }
 
   .about-us-text .about-deskripsi{
-    font-family: 'geologica';
-    font-size: 1rem;
+    font-size: 1.25rem;
     width: 36rem;
-    font-weight: 200;
-    justify-content: center;
-    color: var(--text-second-color);
-    margin: 40px;
     }
 
     .craft-content{
@@ -812,9 +816,9 @@ footer{
     }
 
     .content-box .content-box-img{
-    width: 16rem;
-    height: 26rem;
-    overflow: hidden;
+        width: 16rem;
+        height: 26rem;
+        overflow: hidden;
     }
 
     .content-box-img img{
@@ -831,7 +835,11 @@ footer{
     }
 
     .partnership-img img{
-    height: 44px;
+        height: 50px;
+    }
+
+    .card-testi-content{
+        width: 32rem;
     }
 
 }

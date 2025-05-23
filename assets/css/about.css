@@ -610,7 +610,6 @@ nav{
     justify-content: center;
     align-items: center;
     margin: auto;
-    position: absolute;
     display: flex;
     flex-wrap: wrap;
     overflow: visible;
@@ -1052,4 +1051,35 @@ footer{
     color: var(--text-second-color);
     font-weight: 500;
     color: #BCBCBC;
+}
+
+
+@media (max-width: 1280px) {
+  .about-us-text .about-deskripsi{
+        font-size: 1.25rem;
+        width: 36rem;
+    }
+
+    .about-us-img img{
+        width: 20rem;
+    }
+
+    .content-box .content-box-img{
+        width: 16rem;
+        height: 26rem;
+        overflow: hidden;
+    }
+
+    .content-box-img img{
+        object-fit: cover;
+        max-width: 23.125rem;
+    }
+    .partnership-img img{
+        height: 50px;
+    }
+
+    .card-testi-content{
+        width: 32rem;
+    }
+
 }

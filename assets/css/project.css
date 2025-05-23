@@ -1218,3 +1218,59 @@ footer{
     color: #BCBCBC;
 }
 
+@media (max-width: 1388px) {
+    .card-testi-content{
+        width: 36rem;
+    }
+    .bottom-text-feel p{
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 1280px) {
+  .bottom-text-feel p{
+    font-size: 4rem;
+    max-width:32.875rem;
+  }
+
+  .about-us-text .about-deskripsi{
+    font-size: 1.25rem;
+    width: 36rem;
+    }
+
+    .craft-content{
+        gap: 6px;
+    }
+
+    .about-us-img img{
+        width: 20rem;
+    }
+
+    .content-box .content-box-img{
+        width: 16rem;
+        height: 26rem;
+        overflow: hidden;
+    }
+
+    .content-box-img img{
+        object-fit: cover;
+        max-width: 23.125rem;
+    }
+
+    .header-box{
+        font-size: 16px;
+    }
+
+    .deskripsi-box{
+        font-size: 14px;
+    }
+
+    .partnership-img img{
+        height: 50px;
+    }
+
+    .card-testi-content{
+        width: 32rem;
+    }
+
+}
