@@ -786,7 +786,7 @@ footer{
     color: #BCBCBC;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1366px) {
   .bottom-text-feel p{
     font-size: 4rem;
     max-width:32.875rem;;
