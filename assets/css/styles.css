@@ -797,14 +797,19 @@ footer{
 }
 
 @media (max-width: 1280px) {
-  .bottom-text-feel p{
-    font-size: 4rem;
-    max-width:32.875rem;
-  }
-
-  .about-us-text .about-deskripsi{
-    font-size: 1.25rem;
-    width: 36rem;
+    .bottom-text-feel p{
+        font-size: 4rem;
+        max-width:32.875rem;
+    }
+    .people-feel-img{
+        align-items: center;
+        max-width: 25.75rem;
+        overflow: hidden;
+        height: 33.625rem;
+    }
+    .about-us-text .about-deskripsi{
+        font-size: 1.25rem;
+        width: 36rem;
     }
 
     .craft-content{

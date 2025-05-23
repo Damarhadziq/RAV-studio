@@ -134,6 +134,11 @@ nav{
     overflow: hidden;
 }
 
+.opening-about-containt{
+    display: flex;
+    flex-direction: column;
+}
+
 .mid-contain{
     display: flex;
     position: absolute;

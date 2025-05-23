@@ -132,22 +132,23 @@ nav{
 /* TOP-PROJECT */
 .top-project{
     width: 100vw;
-    position: relative;
     height: 100vh;
+    position: relative;
     overflow: hidden;
     margin-bottom: 100px;
 }
 
 .top-project-contain{
     display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
     background-image: url('../img/PROJECT\ FIRST\ BG.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    align-items: flex-end; 
+    align-items: center;
+    justify-content: center;
 }
 
 .left-project-contain{
@@ -157,135 +158,53 @@ nav{
     align-items: center;
     gap: 24px;
     justify-content: center;
-    
 }
 
 .top-title-project{
     display: flex;
+    width: 100%;
+    height: 100%;
+    padding-inline: 60px;
     flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    z-index: 9;
+    margin: auto;
 }
 
 .first-title{
-    font-family: Barlow;
-    max-width: 370px;
-    font-size: 20px;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 2rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    background: linear-gradient(90deg, #999 0%, #FFF 100%);
+    background: linear-gradient(90deg, #949494 0%, #FFF 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.sec-title{
-    font-family: Barlow;
-    font-size: 40px;
+.sec-title h2{
+    color: #FFF;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 4rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
-    background: linear-gradient(90deg, #777272 0%, #D4CAFF 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    max-width: 74.5625rem;
+}
+
+.top-grafik-bg{
+    position: absolute;
+    left: 0%;
+    bottom: -12%;
 }
 
 .top-grafik-bg img{
     max-width: 700px;
-}
-
-.right-img-contain{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    position: relative;
-    right: -20%;
-    bottom: 6%;
-}
-
-.main-img{
-    position: relative;
-
-}
-
-.svg-img img{
-    width: 75px;
-    position: absolute;
-    height: 87px;
-    flex-shrink: 0;
-    top: -8%;
-    left: -10%;
-}
-
-.img-contain{
-    overflow: hidden;
-    width: 450px;
-    height: 465px;
-    border-radius: 12px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.img-contain img{
-    width: 450px;
-    filter: brightness(70%);
-}
-
-.blur-card{
-    position: absolute;
-    bottom: 24%;
-    left: -20%;
-    z-index: 9;
-}
-
-.blur-card-text{
-    position: relative;
-    display: flex;
-    padding: 10px 1px 10px 12px;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(153, 153, 153, 0.10) 100%);
-    backdrop-filter: blur(6px);
-}
-
-.blur-card p{
-    max-width: 175px;
-    color: #FFF;
-    font-family: barlow;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-}
-
-.blur-svg{
-    position: absolute;
-    top: -44%;
-    left: -12%;
-    z-index: -1;
-}
-
-.blur-svg img{
-    width: 60px;
-}
-
-.bottom-right-contain{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: 24px;
-}
-
-.text-bottom{
-    max-width: 500px;
-    text-align: right;
-    font-size: 16px;
-    color: var(--text-second-color);
-    font-family: geologica;
 }
 
 .blur-mask-bottom{
@@ -297,6 +216,23 @@ nav{
     background: var(--MAIN-COLOR, #181818);
     filter: blur(40px);
     z-index: 20;
+}
+
+.project-btn{
+    display: inline-flex;
+    padding: 1.25rem 3rem 1.25rem 3rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.25rem;
+    background: #1F1F1F;
+    box-shadow: 0px 14px 35px 0px rgba(0, 0, 0, 0.06);
+    color: #B8B8B8;
+    text-align: center;
+    font-family: Geologica;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-top: 32px;
+    font-weight: 300;
 }
 
 /* ars journey */
@@ -1225,6 +1161,10 @@ footer{
     .bottom-text-feel p{
         font-size: 5rem;
     }
+    .bottom-text-feel p{
+        font-size: 4.2rem;
+        max-width:34rem;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -1232,45 +1172,4 @@ footer{
     font-size: 4rem;
     max-width:32.875rem;
   }
-
-  .about-us-text .about-deskripsi{
-    font-size: 1.25rem;
-    width: 36rem;
-    }
-
-    .craft-content{
-        gap: 6px;
-    }
-
-    .about-us-img img{
-        width: 20rem;
-    }
-
-    .content-box .content-box-img{
-        width: 16rem;
-        height: 26rem;
-        overflow: hidden;
-    }
-
-    .content-box-img img{
-        object-fit: cover;
-        max-width: 23.125rem;
-    }
-
-    .header-box{
-        font-size: 16px;
-    }
-
-    .deskripsi-box{
-        font-size: 14px;
-    }
-
-    .partnership-img img{
-        height: 50px;
-    }
-
-    .card-testi-content{
-        width: 32rem;
-    }
-
 }
