@@ -228,7 +228,7 @@ nav{
     text-decoration: none;
     color: var(--text-second-color);
     margin: 10px;
-    font-size: 1.5rem;
+    font-size: 24px;
     align-items: center;
     justify-content: center;
 }
@@ -282,6 +282,14 @@ nav{
 }
 
 /* ----- CRAFTING ----- */
+.crafting-contain{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    padding-inline: 60px;
+    margin: auto;
+}
 .header-craft{
     display: flex;
     align-items: center;
@@ -312,6 +320,7 @@ nav{
 }
 
 .craft-content{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -328,14 +337,15 @@ nav{
 }
 
 .content-box .content-box-img{
-    width: 23.125rem;
-    height: 26.875rem;
+    max-width: 23.125rem;
+    min-width: 20rem;
+    max-height: 26.875rem;
     overflow: hidden;
 }
 
 .content-box-img img{
     object-fit: cover;
-    width: 23.125rem;
+    max-width: 23.125rem;
 }
 
 .header-box{
@@ -774,4 +784,11 @@ footer{
     color: var(--text-second-color);
     font-weight: 500;
     color: #BCBCBC;
+}
+
+@media (max-width: 1280px) {
+  .bottom-text-feel p{
+    font-size: 4rem;
+    max-width:32.875rem;;
+  }
 }
