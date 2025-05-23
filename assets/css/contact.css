@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Serif+Text:ital@0;1&family=Geologica:wght@100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ----- VARIABLES ----- */
+:root{
+    --body-color: rgb(24, 24, 24);
+
+    --text-first-color: rgb(232, 220, 197);
+    --text-second-color: rgb(248, 246, 243);
+    
+    --first-color-blur: rgba(24, 24, 24, 0.1);
+    --first-color-hover: rgb(40, 91, 212);
+}
+
+/* ----- BASE ----- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----- SMOOTH SCROLL ----- */
+html{
+    scroll-behavior: smooth;
+    overflow: auto;
+}
+
+[data-scroll-container] {
+  min-height: 100vh;
+}
+
+/* ----- CHANGE THE SCROLL BAR DESIGN ----- */
+::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+    display: none;
+}
+::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+    background: #ccc;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #bbb;
+}
+
+body {
+    background: var(--body-color);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+    body.loaded {
+    opacity: 1;
+}
+
+/* ----- NAVBAR ----- */
+nav{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
+    transition: .3s;    
+    z-index: 100;
+}
+.nav-logo img{
+   position: fixed;
+   width: 110px;
+   height: auto;
+   left: 60px;
+   justify-content: center;
+   align-items: center;
+}
+.nav-menu{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border-radius: 32px;
+    background: rgba(24, 24, 24, 0.10);
+    backdrop-filter: blur(5px);
+}
+
+.nav-menu .nav_menu_list{
+    display: flex;
+    margin: 12px 24px;
+    gap: 36px;
+}
+.nav-menu .nav_list{
+    display: flex;
+    list-style: none;
+    font-family: 'geologica';
+    justify-content: center;
+    color: var(--text-second-color);
+}
+.nav-link{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: var(--text-second-color);
+    font-size: 14px;
+    font-weight: 400;
+    transition: ease-in-out .5s;
+}
+
+.nav-link:hover{
+    color: var(--text-first-color);
+}
+
+.nav-menu-btn{
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    display: none;
+}
+.nav-menu-btn i{
+    font-size: 28px;
+    cursor: pointer;
+}
+.active-link{
+    position: relative;
+    color: var(--text-first-color);
+    transition: .3;
+}
+
+/* hero section */
+.hero-section{
+    width: 100vw;
+    height: 100vh;
+}
+
+.hero-contain{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.top-hero-contain{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 60px;
+}
+
+.hero-text-contain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-title-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero-title-contain{
+    font-family: "Plus Jakarta Sans";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; 
+    letter-spacing: -1.28px;
+    background: linear-gradient(90deg, #FFF 0%, #919191 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    max-width: 730px;
+}
+
+.hero-btn{
+    display: flex;
+    width: fit-content;
+    padding: 14px 20px;
+    justify-content: center;
+    align-items: center;
+    font-family: Geologica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    color: #FFF;
+    text-decoration: none;
+    border: 2px solid #ECECEC;
+}
+
+.marquee-partnership {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    animation: scroll-marquee 30s linear infinite;
+    width: max-content;
+    margin-bottom: 60px;
+    display: flex;
+    padding: 24px 0px;
+    justify-content: center;
+    align-items: center;
+    background: #262626;
+    flex-shrink: 0;
+}
+
+.marquee-partnership-contain {
+  display: flex;
+  gap: 44px;
+  width: max-content;
+  white-space: nowrap;
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partnership{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 100vw;
+    height: 100%;
+}
+
+.partnership-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: auto;
+    gap: 60px;
+}
+
+.partnership-img img{
+    height: 54px;
+    width: fit-content;
+}
