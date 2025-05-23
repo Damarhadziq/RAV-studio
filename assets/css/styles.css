@@ -404,6 +404,7 @@ nav{
     display: flex;
     flex-direction: row;
     position: absolute;
+    /* right: 20%; */
 }
 
 .about-us-text{
@@ -509,7 +510,7 @@ nav{
     justify-content: center;
     align-items: center;
     margin: auto;
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     flex-wrap: wrap;
     overflow: visible;
@@ -791,4 +792,46 @@ footer{
     font-size: 4rem;
     max-width:32.875rem;;
   }
+
+  .about-us-text .about-deskripsi{
+    font-family: 'geologica';
+    font-size: 1rem;
+    width: 36rem;
+    font-weight: 200;
+    justify-content: center;
+    color: var(--text-second-color);
+    margin: 40px;
+    }
+
+    .craft-content{
+        gap: 6px;
+    }
+
+    .about-us-img img{
+        width: 20rem;
+    }
+
+    .content-box .content-box-img{
+    width: 16rem;
+    height: 26rem;
+    overflow: hidden;
+    }
+
+    .content-box-img img{
+        object-fit: cover;
+        max-width: 23.125rem;
+    }
+
+    .header-box{
+        font-size: 16px;
+    }
+
+    .deskripsi-box{
+        font-size: 14px;
+    }
+
+    .partnership-img img{
+    height: 44px;
+    }
+
 }
