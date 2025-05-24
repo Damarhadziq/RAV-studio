@@ -47,7 +47,7 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
-                    <a href="index.php" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -207,31 +207,47 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
 
          <!-- -------------- THE FOUNDER ---------------- -->
          <section class="founder" data-scroll-section>
-            <div class="founder-card">
-              <div class="founder-bg">
-                <img src="assets/img/FOUNDER-BG.jpg" alt="Founder Background">
-              </div>
-              <div class="founder-content">
-                <div class="top-text-founder">
-                  <p class="title-founder">The Founder</p>
-                </div>
-                <div class="founder-logo">
-                  <img src="assets/img/RAV LOGO.png" alt="RAV Logo">
-                </div>
-                <a href="https://www.instagram.com/azizahrara?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
-                    <div class="founder-information">
-                      <p class="name-founder">Azizah Rara</p>
-                      <p class="deskripsi-information">Founder and Owner of RAV Studio & Build</p>
-                    </div>
-                </a>
+            <div class="founder-contain" data-scroll data-scroll-speed="6">
                 <div class="founder-img">
-                  <img src="assets/img/founder.png" alt="Rara Everlyn">
+                    <img src="assets/img/founder-img.jpg" alt="">
                 </div>
-              </div>
+                <div class="founder-main-contain">
+                    <div class="founder-text-title">
+                        <div class="founder-title">
+                            <p class="founder-title-label">Founder</p>
+                            <p class="founder-main-title">Azizah Rara</p>
+                        </div>
+                        <p class="founder-short-text">This studio was founded from a deep passion for designing spaces that are not only functional, but also meaningful and inspiring. Every line and detail is crafted with a human-centered approach, mindful of sustainability, and responsive to its context.</p>
+                    </div>
+                    <div class="sosmed-founder">
+                        <a href="" class="sosmed-icon-founder">
+                            <i class="hgi hgi-stroke hgi-instagram"></i>
+                        </a>
+                        <a href="" class="sosmed-icon-founder">
+                            <i class="hgi hgi-stroke hgi-twitter"></i>
+                        </a>
+                        <a href="" class="sosmed-icon-founder">
+                            <i class="hgi hgi-stroke hgi-linkedin-02"></i>
+                        </a>
+                    </div>
+                    <div class="founder-experience">
+                        <p class="title-founder-experience">Ms. Rara Experience</p>
+                        <div class="founder-experience-icon">
+                            <div class="main-founder-experience">
+                                <i class="hgi hgi-stroke hgi-checkmark-circle-03"></i><p>Over 40+ Projects Designed Across 4 Years</p>
+                            </div>
+                            <div class="main-founder-experience">
+                                <i class="hgi hgi-stroke hgi-checkmark-circle-03"></i><p>30+ Satisfied Clients Served Since 2020</p>
+                            </div>
+                            <div class="main-founder-experience">
+                                <i class="hgi hgi-stroke hgi-checkmark-circle-03"></i><p>10 Cities Reached with Contextual Design Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </section>
           
-
         <!-- -------------- OTHER ELEMEN ---------------- -->
          <section class="other-element" data-scroll-section>
             <div class="inovasi">
@@ -295,9 +311,6 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
                 <?php endwhile; ?>
             </div>
 
-            <div class="bg-grafik">
-                <img src="assets/img/grafik bg.png" alt="grafik-bg">
-            </div>
             <div class="grafik-bottom">
                 <img src="assets/img/grafik2.png" alt="">
                 <div class="deskripsi-grafik">

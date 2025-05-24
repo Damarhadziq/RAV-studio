@@ -264,9 +264,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                 <?php endwhile; ?>
             </div>
 
-            <div class="bg-grafik">
-                <img src="assets/img/grafik bg.png" alt="grafik-bg">
-            </div>
+            
          </section>
 
         <!-- -------------- FAQ ---------------- -->
