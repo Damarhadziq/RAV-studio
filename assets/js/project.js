@@ -38,23 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     scroll.update(); 
   });
 
-  // --- ScrollReveal ---
-//   const sr = ScrollReveal({
-//     origin: 'top',
-//     distance: '100px',
-//     duration: 2000,
-//     reset: false
-//   });
-
-//   sr.reveal('.nav-logo',{delay: 100})
-//   sr.reveal('.top-title-project',{delay: 200})
-//   sr.reveal('.top-grafik-bg img',{delay: 300})
-//   sr.reveal('.img-contain img',{delay: 300})
-//   sr.reveal('.blur-card',{delay: 100})
-//   sr.reveal('.blur-svg',{delay: 100})
-//   sr.reveal('.elipse-contain',{delay: 100})
-document.getElementById("booking-form").addEventListener("submit", function(e) {
-        e.preventDefault(); // Stop form dari reload halaman
+  document.getElementById("booking-form").addEventListener("submit", function(e) {
+        e.preventDefault();
 
         const form = e.target;
         const formData = new FormData(form);
@@ -65,16 +50,13 @@ document.getElementById("booking-form").addEventListener("submit", function(e) {
         })
         .then(res => res.text())
         .then(data => {
-            // Tampilkan modal dan nonaktifkan scroll
             document.getElementById("successModal").style.display = "flex";
             document.body.classList.add("modal-open");
 
-            // Kosongkan form
             form.reset();
         })
     });
 
-    // Tombol OK
     document.getElementById("closeModal").addEventListener("click", function () {
         document.getElementById("successModal").style.display = "none";
         document.body.classList.remove("modal-open");

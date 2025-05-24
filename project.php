@@ -365,7 +365,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <form action="" method="post" id="booking-form" class="form-group">
                                 <input type="text" class="form-control" name="client_name" placeholder="Name / Full Name" required>
-                                <input type="email" class="form-control" name="email" placeholder="Email / Phone Number" required>
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
                                 <input type="text" class="form-control" name="project_type" placeholder="Project Type" required>
                                 <textarea class="form-control" name="message" placeholder="Message" required></textarea>
                                 <button class="btn-shine" type="submit" name="submit_booking">
@@ -382,16 +382,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <p>Every line drawn shapes a better tomorrow.</p>
                             </div>
                         </div>
-                        <!-- ✅ MODAL NOTIFIKASI -->
-                        <!-- Modal -->
-                        <div id="successModal" class="modal" style="display: none;">
-                        <div class="modal-content">
-                            <p>Booking berhasil dikirim!</p>
-                            <button id="closeModal">OK</button>
-                        </div>
-                        </div>
                     </div>
-
                     <div class="grafik-bottom">
                         <img src="assets/img/grafik2.png" alt="">
                         <div class="deskripsi-grafik">
@@ -400,6 +391,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
             </section>
+            <!-- MODAL NOTIFIKASI -->
+            <!-- Modal -->
+            <div id="successModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <p class="title-modal">Your Booking Has Been Received!</p>
+                <p class="deskripsi-modal">Thank you for reaching out. Our team will get back to you shortly to discuss your project further.</p>
+                <dotlottie-player src="https://lottie.host/0bb1ed25-5d7a-43c6-af7d-6f9316a1341e/QOdZ5Yj9sq.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+                <button id="closeModal" class="got-it">Got It</button>
+            </div>
+            </div>
         </div>
     </main>
 
@@ -458,8 +459,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/project.js"></script>
-    <script>
-    
-    </script>
 </body>
 </html>
