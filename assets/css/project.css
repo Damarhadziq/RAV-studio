@@ -229,7 +229,7 @@ nav{
     color: #B8B8B8;
     text-align: center;
     font-family: Geologica;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-decoration: none;
     margin-top: 32px;
     font-weight: 300;
@@ -290,21 +290,16 @@ nav{
     filter: brightness(90%);
 }
 
-.journey-btn {
+.deskripsi-journey{
     color: #ECECEC;
-    font-family: Barlow;
-    font-size: 24px;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 1.5rem;
     font-style: normal;
-    font-weight: 600;
-    text-decoration: none;
+    font-weight: 400;
     line-height: normal;
-    letter-spacing: -0.32px;
-    display: inline-flex;
-    padding: 6px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 2px solid #ECECEC;
+    letter-spacing: -0.015rem;
+    max-width: 48.625rem;
 }
 
  /* people-feel  */
@@ -1160,9 +1155,6 @@ footer{
     }
     .bottom-text-feel p{
         font-size: 5rem;
-    }
-    .bottom-text-feel p{
-        font-size: 4.2rem;
         max-width:34rem;
     }
 }

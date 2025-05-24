@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
-    lerp: 0.15,
-    multiplier: 1.2
+    lerp: 0.1,
+    multiplier: 1
   });
 
 
