@@ -204,7 +204,6 @@ nav{
     padding: 24px 0px;
     justify-content: center;
     align-items: center;
-    /* background: #262626; */
     flex-shrink: 0;
 }
 
@@ -435,4 +434,18 @@ footer{
     color: var(--text-second-color);
     font-weight: 500;
     color: #BCBCBC;
+}
+
+@media (max-width: 1388px) {
+    .hero-title-contain{
+        font-size: 3.5rem;
+    }
+    .hero-img{
+        width: 20rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 1280px) {
+
 }
