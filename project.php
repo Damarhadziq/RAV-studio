@@ -365,10 +365,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <form action="" method="post" id="booking-form" class="form-group">
                                 <input type="text" class="form-control" name="client_name" placeholder="Name / Full Name" required>
-                                <input type="text" class="form-control" name="email" placeholder="Email / Phone Number" required>
+                                <input type="email" class="form-control" name="email" placeholder="Email / Phone Number" required>
                                 <input type="text" class="form-control" name="project_type" placeholder="Project Type" required>
                                 <textarea class="form-control" name="message" placeholder="Message" required></textarea>
-
                                 <button class="btn-shine" type="submit" name="submit_booking">
                                     <span>Make Your Project</span>
                                 </button>
@@ -460,13 +459,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/project.js"></script>
     <script>
-document.getElementById("booking-form").addEventListener("submit", function(e) {
+    document.getElementById("booking-form").addEventListener("submit", function(e) {
     e.preventDefault(); // Stop form dari reload halaman
 
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch("submit-booking.php", {
+    fetch("", {
         method: "POST",
         body: formData
     })
@@ -479,21 +478,17 @@ document.getElementById("booking-form").addEventListener("submit", function(e) {
         // Kosongkan form
         form.reset();
     })
-    .catch(err => {
-        alert("Terjadi kesalahan!");
-        console.error(err);
+        .catch(err => {
+            alert("Terjadi kesalahan!");
+            console.error(err);
+        });
     });
-});
 
-// Tombol OK
-document.getElementById("closeModal").addEventListener("click", function () {
-    document.getElementById("successModal").style.display = "none";
-    document.body.classList.remove("modal-open");
-});
+    // Tombol OK
+    document.getElementById("closeModal").addEventListener("click", function () {
+        document.getElementById("successModal").style.display = "none";
+        document.body.classList.remove("modal-open");
+    });
     </script>
-
-
-
-
 </body>
 </html>
