@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'src/PHPMailer.php';
+require 'src/SMTP.php';
+require 'src/Exception.php';
+
 $localhost  = "localhost";
 $username   = "root";
 $password   = "";
@@ -15,18 +21,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $project_type = mysqli_real_escape_string($conn, $_POST['project_type']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
 
-    $sql = "INSERT INTO booking (client_name, email, project_type, message, created_at)
-            VALUES ('$client_name', '$email', '$project_type', '$message', NOW())";
+    $sql = "INSERT INTO booking (client_name, email, project_type, message, status, created_at)
+            VALUES ('$client_name', '$email', '$project_type', '$message', 'pending', NOW())";
 
     if (mysqli_query($conn, $sql)) {
-        echo "success";
+        $last_id = mysqli_insert_id($conn);
+        // Kirim email
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'ravstudioandbuild@gmail.com'; // ganti dengan email kamu
+            $mail->Password   = 'xksz knnk eoju obyd'; // Ganti dengan App Password Gmail
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            $mail->setFrom('tagiestyap@gmail.com', 'RAV Studio & Build');
+            $mail->addAddress($email, $client_name);
+
+            $mail->Subject = "Booking Confirmation: $project_type";
+            $mail->Body    = "Hi $client_name,\n\n"
+               . "We've successfully received your booking with the following details:\n\n"
+               . "Project Type: $project_type\n"
+               . "Your Message:\n$message\n\n"
+               . "Your request has been logged into our system. Our team will carefully review the information and contact you shortly to discuss the next steps, whether it's a consultation, a site survey, or project planning.\n\n"
+               . "We're excited about the opportunity to collaborate and help bring your vision to life.\n\n"
+               . "If you have any additional questions or details to share, feel free to reply to this email.\n\n"
+               . "Warm regards,\n"
+               . "The RAV Studio & Build Team";
+
+            $mail->send();
+
+        // Update status jadi "email_sent"
+            $update = "UPDATE booking SET status = 'email_sent' WHERE id = $last_id";
+            mysqli_query($conn, $update);
+
+            echo "success";
+        } catch (Exception $e) {
+            // Update status jadi "email_failed"
+            $update = "UPDATE booking SET status = 'email_failed' WHERE id = $last_id";
+            mysqli_query($conn, $update);
+
+            echo "error: email gagal dikirim - " . $mail->ErrorInfo;
+        }
     } else {
         echo "error: " . mysqli_error($conn);
     }
 }
+
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
