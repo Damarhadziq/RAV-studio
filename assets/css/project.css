@@ -1097,6 +1097,12 @@ button:hover span {
     margin-bottom: 100px;
 }
 
+/* Saat modal aktif, kunci scroll */
+body.modal-open {
+  overflow: hidden;
+}
+
+
 /* FOOTER */
 footer{
     display: flex;
@@ -1199,6 +1205,10 @@ footer{
         font-size: 5rem;
         max-width:34rem;
     }
+
+    .sec-title h2{
+        font-size: 3.5rem;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -1206,4 +1216,7 @@ footer{
     font-size: 4rem;
     max-width:32.875rem;
   }
+  .sec-title h2{
+        font-size: 3.5rem;
+    }
 }

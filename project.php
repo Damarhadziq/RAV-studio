@@ -365,11 +365,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <form action="" method="post" id="booking-form" class="form-group">
                                 <input type="text" class="form-control" name="client_name" placeholder="Name / Full Name" required>
-                                <input type="text" class="form-control" name="email" placeholder="Email / Phone Number" required>
+                                <input type="email" class="form-control" name="email" placeholder="Email / Phone Number" required>
                                 <input type="text" class="form-control" name="project_type" placeholder="Project Type" required>
                                 <textarea class="form-control" name="message" placeholder="Message" required></textarea>
-
-                                <button class="btn-shine" type="submit">
+                                <button class="btn-shine" type="submit" name="submit_booking">
                                     <span>Make Your Project</span>
                                 </button>
                             </form>
@@ -479,6 +478,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Kosongkan form
             form.reset();
         })
+    fetch("", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        // Tampilkan modal dan nonaktifkan scroll
+        document.getElementById("successModal").style.display = "flex";
+        document.body.classList.add("modal-open");
+
+        // Kosongkan form
+        form.reset();
+    })
         .catch(err => {
             alert("Terjadi kesalahan!");
             console.error(err);
@@ -491,9 +503,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.body.classList.remove("modal-open");
     });
     </script>
-
-
-
-
 </body>
 </html>
