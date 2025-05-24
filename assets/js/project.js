@@ -53,5 +53,31 @@ document.addEventListener("DOMContentLoaded", () => {
 //   sr.reveal('.blur-card',{delay: 100})
 //   sr.reveal('.blur-svg',{delay: 100})
 //   sr.reveal('.elipse-contain',{delay: 100})
+document.getElementById("booking-form").addEventListener("submit", function(e) {
+        e.preventDefault(); // Stop form dari reload halaman
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        fetch("", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+            // Tampilkan modal dan nonaktifkan scroll
+            document.getElementById("successModal").style.display = "flex";
+            document.body.classList.add("modal-open");
+
+            // Kosongkan form
+            form.reset();
+        })
+    });
+
+    // Tombol OK
+    document.getElementById("closeModal").addEventListener("click", function () {
+        document.getElementById("successModal").style.display = "none";
+        document.body.classList.remove("modal-open");
+    });
 });
 
