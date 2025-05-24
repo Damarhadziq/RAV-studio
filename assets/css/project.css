@@ -696,46 +696,73 @@ nav{
 /* form project */
   .modal {
     position: fixed;
-    z-index: 9999;
+    top: 0%;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    z-index: 99999;
   }
 
   .modal-content {
-    background-color: white;
-    padding: 20px 30px;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    background: #181818;
     text-align: center;
-    max-width: 400px;
-    width: 90%;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
 
+  .title-modal{
+    color: #FFF;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .deskripsi-modal{
+    color: #FFF;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 380px;
+  }
+
   .modal-content button {
-    margin-top: 15px;
-    padding: 8px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
+    display: flex;
+    padding: 14px 164px;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
     border: none;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
+    background: #3F3F3F;
   }
-
   .modal-content button:hover {
-    background-color: #555;
+    background: #505050;
+    transition: all 0.3s ease;
   }
-
   body.modal-open {
     overflow: hidden;
   }
-
 .form-project{
     width: 100vw;
     height: 100%;
@@ -914,7 +941,7 @@ textarea.form-control {
     transition: color 0.3s ease;
 }
 
-button {
+.btn-shine {
   position: relative;
   margin: 0;
   padding: 17px 35px;
@@ -937,19 +964,19 @@ button {
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
-button span {
+.btn-shine span {
   color: #ececec;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.7px;
 }
 
-button:hover {
+.btn-shine:hover {
   animation: rotate624 0.7s ease-in-out both;
   background: linear-gradient(90deg, #666666 0%, #505050 100%);
 }
 
-button:hover span {
+.btn-shine:hover span {
   animation: storm1261 0.7s ease-in-out both;
   animation-delay: 0.06s;
 }
@@ -1096,12 +1123,6 @@ button:hover span {
     line-height: normal;
     margin-bottom: 100px;
 }
-
-/* Saat modal aktif, kunci scroll */
-body.modal-open {
-  overflow: hidden;
-}
-
 
 /* FOOTER */
 footer{
