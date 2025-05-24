@@ -84,5 +84,30 @@ document.getElementById("closeModal").addEventListener("click", function () {
     document.body.classList.remove("modal-open");
 });
 
+function updateStatus(id, status) {
+    const formData = new FormData();
+    formData.append('action', 'update_status');
+    formData.append('id', id);
+    formData.append('status', status);
+
+    fetch('', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Status berhasil diperbarui!');
+            if (data.antrian_dipanggil) {
+                alert('Klien antrian dengan ID ' + data.client_id + ' telah dikirim email!');
+            }
+            location.reload();
+        } else {
+            alert('Gagal memperbarui status: ' + data.message);
+        }
+    })
+    .catch(err => alert('Terjadi kesalahan: ' + err));
+}
+
 });
 
