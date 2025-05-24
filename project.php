@@ -369,7 +369,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="text" class="form-control" name="project_type" placeholder="Project Type" required>
                                 <textarea class="form-control" name="message" placeholder="Message" required></textarea>
 
-                                <button class="btn-shine" type="submit" name="submit_booking">
+                                <button class="btn-shine" type="submit">
                                     <span>Make Your Project</span>
                                 </button>
                             </form>
@@ -460,36 +460,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/project.js"></script>
     <script>
-document.getElementById("booking-form").addEventListener("submit", function(e) {
-    e.preventDefault(); // Stop form dari reload halaman
+    document.getElementById("booking-form").addEventListener("submit", function(e) {
+        e.preventDefault(); // Stop form dari reload halaman
 
-    const form = e.target;
-    const formData = new FormData(form);
+        const form = e.target;
+        const formData = new FormData(form);
 
-    fetch("submit-booking.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-        // Tampilkan modal dan nonaktifkan scroll
-        document.getElementById("successModal").style.display = "flex";
-        document.body.classList.add("modal-open");
+        fetch("", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+            // Tampilkan modal dan nonaktifkan scroll
+            document.getElementById("successModal").style.display = "flex";
+            document.body.classList.add("modal-open");
 
-        // Kosongkan form
-        form.reset();
-    })
-    .catch(err => {
-        alert("Terjadi kesalahan!");
-        console.error(err);
+            // Kosongkan form
+            form.reset();
+        })
+        .catch(err => {
+            alert("Terjadi kesalahan!");
+            console.error(err);
+        });
     });
-});
 
-// Tombol OK
-document.getElementById("closeModal").addEventListener("click", function () {
-    document.getElementById("successModal").style.display = "none";
-    document.body.classList.remove("modal-open");
-});
+    // Tombol OK
+    document.getElementById("closeModal").addEventListener("click", function () {
+        document.getElementById("successModal").style.display = "none";
+        document.body.classList.remove("modal-open");
+    });
     </script>
 
 
