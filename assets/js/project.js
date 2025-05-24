@@ -39,27 +39,50 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("booking-form").addEventListener("submit", function(e) {
-        e.preventDefault();
+    e.preventDefault();
 
-        const form = e.target;
-        const formData = new FormData(form);
+    const form = e.target;
+    const formData = new FormData(form);
+    const submitBtn = form.querySelector("button[type='submit']");
 
-        fetch("", {
-            method: "POST",
-            body: formData
-        })
-        .then(res => res.text())
-        .then(data => {
+    // Disable tombol dan ubah teksnya
+    submitBtn.disabled = true;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = "<span>Sending...</span>";
+
+    formData.set('message', formData.get('message').replace(/[\r\n]+/g, ' '));
+    fetch("", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.includes("success")) {
+            // Tampilkan modal sukses
             document.getElementById("successModal").style.display = "flex";
             document.body.classList.add("modal-open");
-
             form.reset();
-        })
-    });
+        } else {
+            // Tampilkan pesan error
+            alert("Terjadi kesalahan saat mengirim:\n" + data);
+        }
 
-    document.getElementById("closeModal").addEventListener("click", function () {
-        document.getElementById("successModal").style.display = "none";
-        document.body.classList.remove("modal-open");
+        // Aktifkan kembali tombol
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+    })
+    .catch(error => {
+        alert("Gagal mengirim data:\n" + error);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
     });
+});
+
+// Tombol OK di modal
+document.getElementById("closeModal").addEventListener("click", function () {
+    document.getElementById("successModal").style.display = "none";
+    document.body.classList.remove("modal-open");
+});
+
 });
 
