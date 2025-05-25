@@ -97,12 +97,12 @@ if (isset($_POST['action']) && $_POST['action'] === 'update_status') {
 
     $response = ['status' => 'success', 'antrian_dipanggil' => false];
 
-    // Setelah update progress_status jadi "Selesai"
-$progress = $_POST['progress_status']; // misal dari dropdown
+    // // Setelah update progress_status jadi "Selesai"
+    // $progress = $_POST['progress_status']; // misal dari dropdown
 
     // Jika dari progress → selesai, cek apakah proyek aktif sekarang < 3
     if ($old === 'progress' && $new_status === 'selesai') {
-        $cek_progress = mysqli_query($conn, "SELECT COUNT(*) as jumlah FROM booking WHERE manual_status = 'progress'");
+        $cek_progress = mysqli_query($conn, "SELECT COUNT(*) as total FROM booking WHERE status = 'email_sent' AND manual_status = 'progress'");
         $jumlah_now = mysqli_fetch_assoc($cek_progress)['jumlah'];
 
         if ($jumlah_now < 3) {
@@ -133,7 +133,7 @@ $progress = $_POST['progress_status']; // misal dari dropdown
                         . "Terima kasih atas kesabarannya!\n\nSalam,\nTim RAV Studio & Build";
 
                     $mail->send();
-                    mysqli_query($conn, "UPDATE booking SET status = 'waiting_client_confirmation' WHERE id = $client_id");
+                    mysqli_query($conn, "UPDATE booking SET status = 'waiting_send', manual_status = 'progress' WHERE id = $client_id");
 
                     $response['antrian_dipanggil'] = true;
                     $response['client_id'] = $client_id;
