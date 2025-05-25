@@ -104,15 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="about.html" class="nav-link">About</a>
+                    <a href="about.php" class="nav-link">About</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="project.html" class="nav-link active-link">Project</a>
+                    <a href="#project" class="nav-link scroll-link active-link" data-target="#project">Project</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -125,8 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
        <!-- -------------- PROJECT ---------------- -->
-       <div class="project" id="project">
-            <section class="top-project" data-scroll-section>
+       <div class="project">
+            <section class="top-project" data-scroll-section  id="project">
                 <div class="top-project-contain">
                     <div class="left-project-contain">
                         <div class="top-title-project">
@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="sec-title" data-scroll data-scroll-direction="vertikal" data-scroll-speed="4" data-scroll-position="top">
                                 <h2>Each space we design holds meaning — shaped by people, place, and purpose.</h2>
                             </div>
-                            <a href="" class="project-btn">
+                            <a href="detail-project.html" class="project-btn">
                                 See Our Projects
                             </a>
                         </div>
@@ -437,7 +437,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </section>
             <!-- MODAL NOTIFIKASI -->
-            <!-- Modal -->
             <div id="successModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <p class="title-modal">Your Booking Has Been Received!</p>

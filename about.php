@@ -47,15 +47,15 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="#about" class="nav-link active-link">About</a>
+                    <a href="#about" class="nav-link scroll-link active-link" data-target="#about">About</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="project.html" class="nav-link">Project</a>
+                    <a href="project.php" class="nav-link">Project</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -68,8 +68,8 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
        <!-- -------------- OPENING ABOUT ---------------- -->
-       <div class="about" id="about">
-        <section class="opening-about" data-scroll-section>
+       <div class="about" id="#about">
+        <section class="opening-about" data-scroll-section id="about">
             <div class="opening-about-containt">
                 <div class="mid-contain">
                     <div class="short-text">

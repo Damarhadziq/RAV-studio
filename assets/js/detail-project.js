@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lerp: 0.1,
     multiplier: 1
   });
+
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     scroll.update();
@@ -45,24 +46,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   sr.reveal('.nav-logo',{delay: 100})
-  
-  document.querySelectorAll('.scroll-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetSelector = this.getAttribute('data-target');
-    const target = document.querySelector(targetSelector);
-    
-    if (target) {
-      scroll.scrollTo(target, {
-        offset: 0,
-        duration: 1000,
-        easing: [0.25, 0.0, 0.35, 1.0]
-      });
-
-      // Update hash (optional)
-      history.pushState(null, null, targetSelector);
-    }
-  });
 });
-});
-

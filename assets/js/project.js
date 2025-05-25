@@ -58,16 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(data => {
         if (data.includes("success")) {
-            // Tampilkan modal sukses
             document.getElementById("successModal").style.display = "flex";
             document.body.classList.add("modal-open");
             form.reset();
         } else {
-            // Tampilkan pesan error
             alert("Terjadi kesalahan saat mengirim:\n" + data);
         }
 
-        // Aktifkan kembali tombol
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
     })
@@ -78,10 +75,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Tombol OK di modal
 document.getElementById("closeModal").addEventListener("click", function () {
     document.getElementById("successModal").style.display = "none";
     document.body.classList.remove("modal-open");
+});
+
+  const sr = ScrollReveal({
+    origin: 'top',
+    distance: '100px',
+    duration: 2000,
+    reset: false
+  });
+
+  sr.reveal('.nav-logo',{delay: 100})
+
+  
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetSelector = this.getAttribute('data-target');
+    const target = document.querySelector(targetSelector);
+    
+    if (target) {
+      scroll.scrollTo(target, {
+        offset: 0,
+        duration: 1000,
+        easing: [0.25, 0.0, 0.35, 1.0]
+      });
+
+      // Update hash (optional)
+      history.pushState(null, null, targetSelector);
+    }
+  });
 });
 
 });

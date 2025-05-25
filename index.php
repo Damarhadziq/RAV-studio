@@ -50,7 +50,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
-                    <a href="#home" class="nav-link active-link">Home</a>
+                    <a href="#home" class="nav-link scroll-link active-link" data-target="#home">Home</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -58,7 +58,7 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
-                    <a href="project.html" class="nav-link">Project</a>
+                    <a href="project.php" class="nav-link">Project</a>
                     <div class="circle"></div>
                 </li>
                 <li class="nav_list">
@@ -71,8 +71,8 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
     <!-- ---------- ---- MAIN ---------------- -->
     <main class="wrapper">
        <!-- -------------- FEATURED BOX ---------------- -->
-       <div class="home" id="home">
-           <section class="featured-box" data-scroll-section>
+       <div class="home">
+           <section class="featured-box" data-scroll-section  id="home">
                <div class="featured-text">
                 <div class="video-bg">
                     <video autoplay muted loop id="bg-video">
