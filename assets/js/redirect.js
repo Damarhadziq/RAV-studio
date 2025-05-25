@@ -1,6 +1,6 @@
 function checkScreenSize() {
     if (window.innerWidth >= 1024) {
-      window.location.href = "index.html"; 
+      window.location.href = "index.php"; 
     }
   }
 
