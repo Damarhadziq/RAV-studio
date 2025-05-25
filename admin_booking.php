@@ -232,6 +232,7 @@ $total_bookings = mysqli_num_rows($result);
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.2);
+            margin-top: 2rem;
         }
 
         .table-header {
@@ -257,8 +258,8 @@ $total_bookings = mysqli_num_rows($result);
         }
 
         .table-wrapper::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
         }
 
         .table-wrapper::-webkit-scrollbar-track {
@@ -267,49 +268,129 @@ $total_bookings = mysqli_num_rows($result);
 
         .table-wrapper::-webkit-scrollbar-thumb {
             background: #cbd5e1;
-            border-radius: 3px;
+            border-radius: 4px;
         }
 
+        /* Table Styles */
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            min-width: 1200px;
         }
 
         th, td {
-            padding: 1rem 1.5rem;
+            padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+            word-wrap: break-word;
         }
 
         th {
             background: #f8fafc;
             color: #475569;
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             position: sticky;
             top: 0;
             z-index: 10;
+            white-space: nowrap;
         }
 
         td {
             color: #334155;
-            transition: all 0.2s ease;
+            line-height: 1.5;
         }
 
+        /* Column Widths */
+        th:nth-child(1), td:nth-child(1) { width: 80px; }   /* ID */
+        th:nth-child(2), td:nth-child(2) { width: 150px; }  /* Name */
+        th:nth-child(3), td:nth-child(3) { width: 200px; }  /* Email */
+        th:nth-child(4), td:nth-child(4) { width: 140px; }  /* Project Type */
+        th:nth-child(5), td:nth-child(5) { width: 250px; }  /* Message */
+        th:nth-child(6), td:nth-child(6) { width: 100px; }  /* Status */
+        th:nth-child(7), td:nth-child(7) { width: 120px; }  /* Date */
+        th:nth-child(8), td:nth-child(8) { width: 120px; }  /* Action */
+
+        /* Row Hover */
         tr:hover td {
             background: #f8fafc;
         }
 
+        /* ID Badge */
+        .id-badge {
+            background: linear-gradient(135deg, #4a90a4, #3d6b7d);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* Client Name */
+        td:nth-child(2) strong {
+            font-weight: 600;
+            color: #1e293b;
+            display: block;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        /* Email Link */
+        td:nth-child(3) a {
+            color: #4a90a4;
+            text-decoration: none;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        td:nth-child(3) a:hover {
+            text-decoration: underline;
+        }
+
+        /* Project Type */
+        .project-type {
+            padding: 0.4rem 0.6rem;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #475569;
+            border-left: 3px solid #4a90a4;
+            font-size: 0.8rem;
+            display: inline-block;
+            max-width: 100%;
+            word-wrap: break-word;
+            line-height: 1.3;
+        }
+
+        /* Message - Full Text Visible */
+        .message-preview {
+            color: #64748b;
+            font-style: italic;
+            word-wrap: break-word;
+            white-space: normal;
+            line-height: 1.4;
+            font-size: 0.85rem;
+            max-width: 100%;
+            overflow: visible;
+            text-overflow: unset;
+        }
+
         /* Status Badges */
         .status-badge {
-            padding: 0.375rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: capitalize;
+            display: inline-block;
+            text-align: center;
+            min-width: 70px;
         }
 
         .status-pending {
@@ -327,52 +408,40 @@ $total_bookings = mysqli_num_rows($result);
             color: #065f46;
         }
 
-        /* ID Badge */
-        .id-badge {
-            background: linear-gradient(135deg, #4a90a4, #3d6b7d);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
+        /* Date Styling */
+        td:nth-child(7) time {
+            display: block;
+            line-height: 1.3;
+            font-size: 0.85rem;
         }
 
-        /* Project Type */
-        .project-type {
-            padding: 0.375rem 0.75rem;
-            background: #f1f5f9;
-            border-radius: 8px;
-            font-weight: 500;
-            color: #475569;
-            border-left: 3px solid #4a90a4;
-        }
-
-        /* Message Preview */
-        .message-preview {
-            max-width: 200px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        td:nth-child(7) small {
             color: #64748b;
-            font-style: italic;
+            font-size: 0.75rem;
         }
 
         /* Status Select */
         .status-select {
             background: white;
             border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            padding: 0.4rem 0.6rem;
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
+            width: 100%;
+            max-width: 110px;
         }
 
         .status-select:focus {
             outline: none;
             border-color: #4a90a4;
             box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.1);
+        }
+
+        .status-select:hover {
+            border-color: #cbd5e1;
         }
 
         /* Empty State */
@@ -388,37 +457,52 @@ $total_bookings = mysqli_num_rows($result);
             opacity: 0.5;
         }
 
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
         /* Responsive */
+        @media (max-width: 1200px) {
+            .table-wrapper {
+                overflow-x: scroll;
+            }
+        }
+
         @media (max-width: 768px) {
-            nav#header {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-menu ul {
-                gap: 1rem;
-            }
-
-            .main-container {
-                padding: 1rem;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
             th, td {
-                padding: 0.75rem;
-                font-size: 0.875rem;
+                padding: 0.75rem 0.5rem;
+                font-size: 0.8rem;
             }
-
+            
+            .table-wrapper {
+                max-height: 60vh;
+            }
+            
             .message-preview {
-                max-width: 150px;
+                font-size: 0.8rem;
+            }
+            
+            .project-type {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.5rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .table-wrapper {
+                overflow: visible;
+                max-height: none;
+            }
+            
+            table {
+                min-width: auto;
+            }
+            
+            .message-preview {
+                font-size: 0.8rem;
             }
         }
 
