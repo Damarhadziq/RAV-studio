@@ -240,7 +240,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <p class="contain-deskripsi">Residential / Tropical Modern</p>
                                 </div>
                             </div>
-                            <a href="" class="btn-deskripsi-project">See Detail!</a>
+                            <a href="detail-project.html" class="btn-deskripsi-project">See Detail!</a>
                         </div>
                     </div>
                 </div>
