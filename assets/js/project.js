@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = "<span>Sending...</span>";
 
-    formData.set('message', formData.get('message').replace(/[\r\n]+/g, ' '));
+    formData.set('message', formData.get('message').replace(/[\r\n]+/g,' '));
     fetch("", {
         method: "POST",
         body: formData
@@ -103,7 +103,6 @@ document.querySelectorAll('.scroll-link').forEach(link => {
         easing: [0.25, 0.0, 0.35, 1.0]
       });
 
-      // Update hash (optional)
       history.pushState(null, null, targetSelector);
     }
   });

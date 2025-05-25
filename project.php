@@ -410,7 +410,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <form action="" method="post" id="booking-form" class="form-group">
                                 <input type="text" class="form-control" name="client_name" placeholder="Name / Full Name" required>
                                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                                <input type="text" class="form-control" name="project_type" placeholder="Project Type" required>
+                                <input type="text" class="form-control" name="project_type" placeholder="Project Type (cafe, house, etc.)" required>
                                 <textarea class="form-control" name="message" placeholder="Message" required></textarea>
                                 <button class="btn-shine" type="submit" name="submit_booking">
                                     <span>Make Your Project</span>
