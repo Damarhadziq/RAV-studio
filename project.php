@@ -15,63 +15,143 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// 1. Booking Form Submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['client_name'])) {
     $client_name = mysqli_real_escape_string($conn, $_POST['client_name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $project_type = mysqli_real_escape_string($conn, $_POST['project_type']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
 
-    $sql = "INSERT INTO booking (client_name, email, project_type, message, status, created_at)
-            VALUES ('$client_name', '$email', '$project_type', '$message', 'pending', NOW())";
+    // Simpan data ke DB
+    $sql = "INSERT INTO booking (client_name, email, project_type, message, status, manual_status, created_at)
+            VALUES ('$client_name', '$email', '$project_type', '$message', 'pending', 'belum', NOW())";
 
     if (mysqli_query($conn, $sql)) {
         $last_id = mysqli_insert_id($conn);
-        // Kirim email
+
+        // Hitung jumlah proyek on progress
+        $cek_progress = mysqli_query($conn, "SELECT COUNT(*) as jumlah FROM booking WHERE manual_status = 'progress'");
+        $jumlah = mysqli_fetch_assoc($cek_progress)['jumlah'];
+
+        // Siapkan email
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'ravstudioandbuild@gmail.com'; // ganti dengan email kamu
-            $mail->Password   = 'xksz knnk eoju obyd'; // Ganti dengan App Password Gmail
+            $mail->Username   = 'ravstudioandbuild@gmail.com';
+            $mail->Password   = 'xksz knnk eoju obyd';
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
-            $mail->setFrom('tagiestyap@gmail.com', 'RAV Studio & Build');
+            $mail->setFrom('ravstudioandbuild@gmail.com', 'RAV Studio & Build');
             $mail->addAddress($email, $client_name);
 
-            $mail->Subject = "Booking Confirmation: $project_type";
-            $mail->Body    = "Hi $client_name,\n\n"
-               . "We've successfully received your booking with the following details:\n\n"
-               . "Project Type: $project_type\n"
-               . "Your Message:\n$message\n\n"
-               . "Your request has been logged into our system. Our team will carefully review the information and contact you shortly to discuss the next steps, whether it's a consultation, a site survey, or project planning.\n\n"
-               . "We're excited about the opportunity to collaborate and help bring your vision to life.\n\n"
-               . "If you have any additional questions or details to share, feel free to reply to this email.\n\n"
-               . "Warm regards,\n"
-               . "The RAV Studio & Build Team";
+            if ($jumlah >= 3) {
+                // Kirim email antrian
+                $mail->Subject = "Proyek Anda Sedang Dalam Antrian";
+                $mail->Body = "Halo $client_name,\n\n"
+                    . "Terima kasih telah mengisi form booking untuk proyek: $project_type.\n\n"
+                    . "Saat ini kami sedang menangani banyak proyek (lebih dari 3), sehingga proyek Anda akan masuk ke dalam antrian terlebih dahulu.\n"
+                    . "Kami akan menghubungi Anda kembali segera setelah proyek Anda siap untuk dimulai.\n\n"
+                    . "Terima kasih atas pengertiannya.\n\nSalam,\nTim RAV Studio & Build";
 
-            $mail->send();
+                $mail->send();
+                mysqli_query($conn, "UPDATE booking SET status = 'pending' WHERE id = $last_id");
+            } else {
+                // Kirim email konfirmasi normal
+                $mail->Subject = "Booking Confirmation: $project_type";
+                $mail->Body = "Hi $client_name,\n\n"
+                    . "We've successfully received your booking:\n\n"
+                    . "Project Type: $project_type\nMessage:\n$message\n\n"
+                    . "We'll contact you shortly to begin the project.\n\n"
+                    . "Regards,\nRAV Studio & Build";
 
-        // Update status jadi "email_sent"
-            $update = "UPDATE booking SET status = 'email_sent' WHERE id = $last_id";
-            mysqli_query($conn, $update);
+                $mail->send();
+                mysqli_query($conn, "UPDATE booking SET status = 'email_sent' WHERE id = $last_id");
+            }
 
-            echo "success";
+            echo json_encode(['status' => 'success']);
         } catch (Exception $e) {
-            // Update status jadi "email_failed"
-            $update = "UPDATE booking SET status = 'email_failed' WHERE id = $last_id";
-            mysqli_query($conn, $update);
-
-            echo "error: email gagal dikirim - " . $mail->ErrorInfo;
+            mysqli_query($conn, "UPDATE booking SET status = 'email_failed' WHERE id = $last_id");
+            error_log("Email gagal dikirim: " . $mail->ErrorInfo);
+            echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
         }
     } else {
-        echo "error: " . mysqli_error($conn);
+        echo json_encode(['status' => 'error', 'message' => mysqli_error($conn)]);
     }
+    exit;
 }
 
+// 2. Update Manual Status → Jika status progress berkurang, kirim ke antrian
+if (isset($_POST['action']) && $_POST['action'] === 'update_status') {
+    $id = (int)$_POST['id'];
+    $new_status = $_POST['status'];
 
+    // Ambil status lama
+    $result = mysqli_query($conn, "SELECT manual_status FROM booking WHERE id = $id");
+    $old = mysqli_fetch_assoc($result)['manual_status'];
+
+    // Update status baru
+    mysqli_query($conn, "UPDATE booking SET manual_status = '$new_status' WHERE id = $id");
+
+    $response = ['status' => 'success', 'antrian_dipanggil' => false];
+
+    // // Setelah update progress_status jadi "Selesai"
+    // $progress = $_POST['progress_status']; // misal dari dropdown
+
+    // Jika dari progress → selesai, cek apakah proyek aktif sekarang < 3
+    if ($old === 'progress' && $new_status === 'selesai') {
+        $cek_progress = mysqli_query($conn, "SELECT COUNT(*) as total FROM booking WHERE status = 'email_sent' AND manual_status = 'progress'");
+        $jumlah_now = mysqli_fetch_assoc($cek_progress)['jumlah'];
+
+        if ($jumlah_now < 3) {
+            // Cari klien pending tertua (masuk antrian)
+            $pending = mysqli_query($conn, "SELECT * FROM booking WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1");
+            if ($client = mysqli_fetch_assoc($pending)) {
+                $email = $client['email'];
+                $client_name = $client['client_name'];
+                $project_type = $client['project_type'];
+                $client_id = $client['id'];
+
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'ravstudioandbuild@gmail.com';
+                    $mail->Password   = 'xksz knnk eoju obyd';
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port       = 587;
+
+                    $mail->setFrom('ravstudioandbuild@gmail.com', 'RAV Studio & Build');
+                    $mail->addAddress($email, $client_name);
+                    $mail->Subject = "Konfirmasi Proyek Siap Dikerjakan: $project_type";
+                    $mail->Body = "Halo $client_name,\n\n"
+                        . "Kami informasikan bahwa proyek Anda ($project_type) yang sebelumnya dalam antrian kini sudah bisa kami mulai.\n"
+                        . "Mohon balas email ini untuk memberikan konfirmasi bahwa Anda setuju kami mulai mengerjakannya.\n\n"
+                        . "Terima kasih atas kesabarannya!\n\nSalam,\nTim RAV Studio & Build";
+
+                    $mail->send();
+                    mysqli_query($conn, "UPDATE booking SET status = 'waiting_send', manual_status = 'progress' WHERE id = $client_id");
+
+                    $response['antrian_dipanggil'] = true;
+                    $response['client_id'] = $client_id;
+                } catch (Exception $e) {
+                    mysqli_query($conn, "UPDATE booking SET status = 'email_failed' WHERE id = $client_id");
+                    error_log("Gagal kirim email antrian ke $email: " . $mail->ErrorInfo);
+                    $response['status'] = 'error';
+                    $response['message'] = "Gagal kirim email ke antrian: " . $mail->ErrorInfo;
+                }
+            }
+        }
+    }
+
+    echo json_encode($response);
+    exit;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
