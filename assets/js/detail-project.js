@@ -11,8 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add('loaded');
     scroll.update();
 
+    setTimeout(() => {
+        scroll.update();
+    }, 100);
+
     document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('load', () => scroll.update());
+        img.addEventListener('load', () => {
+            setTimeout(() => {
+                scroll.update();
+            }, 50);
+        });
     });
   });
 
