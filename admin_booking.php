@@ -1,5 +1,5 @@
 <?php
-// 1 file untuk tampil + proses update AJAX
+// admin_booking.php
 
 $localhost  = "localhost";
 $username   = "root";
@@ -11,37 +11,36 @@ if (!$conn) {
     die("Koneksi gagal: " . mysqli_connect_error());
 }
 
-// Kalau request POST dari AJAX untuk update status
+// Proses update status via AJAX
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_status') {
     $id = intval($_POST['id']);
-    $manual_status = $_POST['manual_status'];
+    $status = $_POST['status'];
 
-    $allowed_status = ['belum', 'progress', 'selesai'];
-    if (!in_array($manual_status, $allowed_status)) {
+    $allowed_status = ['pending', 'progress', 'completed'];
+    if (!in_array($status, $allowed_status)) {
         http_response_code(400);
         echo "Status tidak valid";
         exit;
     }
 
-    $sql = "UPDATE booking SET manual_status = '$manual_status' WHERE id = $id";
+    $sql = "UPDATE booking SET status = '$status' WHERE id = $id";
     if (mysqli_query($conn, $sql)) {
         echo "Sukses";
     } else {
         http_response_code(500);
         echo "Gagal update status";
     }
-    exit; // penting, supaya bagian HTML nggak ikut dikirim
+    exit;
 }
 
-// Ambil data booking untuk tampil
+// Ambil semua data booking
 $result = mysqli_query($conn, "SELECT * FROM booking ORDER BY created_at DESC");
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar Booking</title>
+    <title>Admin Booking</title>
     <style>
         table {
             width: 100%;
@@ -56,28 +55,25 @@ $result = mysqli_query($conn, "SELECT * FROM booking ORDER BY created_at DESC");
         th {
             background-color: #eee;
         }
-        .status-pending { color: orange; }
-        .status-email_sent { color: green; }
-        .status-email_failed { color: red; }
-        .progress-dropdown {
-            padding: 5px;
-            font-weight: bold;
-        }
-        .status-belum {
+        .status-pending {
             color: gray;
         }
         .status-progress {
             color: blue;
         }
-        .status-selesai {
+        .status-completed {
             color: green;
+        }
+        .dropdown {
+            padding: 5px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <h2>Daftar Booking Client</h2>
 
-    <table id="bookingTable">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -85,16 +81,15 @@ $result = mysqli_query($conn, "SELECT * FROM booking ORDER BY created_at DESC");
                 <th>Email</th>
                 <th>Project</th>
                 <th>Pesan</th>
-                <th>Status Email</th>
-                <th>Progress Status</th>
+                <th>Status Projek</th>
                 <th>Dibuat</th>
             </tr>
         </thead>
         <tbody>
             <?php while($row = mysqli_fetch_assoc($result)) : 
-                $selected_belum = $row['manual_status'] === 'belum' ? 'selected' : '';
-                $selected_progress = $row['manual_status'] === 'progress' ? 'selected' : '';
-                $selected_selesai = $row['manual_status'] === 'selesai' ? 'selected' : '';
+                $selected_pending = $row['status'] === 'pending' ? 'selected' : '';
+                $selected_progress = $row['status'] === 'progress' ? 'selected' : '';
+                $selected_completed = $row['status'] === 'completed' ? 'selected' : '';
             ?>
             <tr>
                 <td><?= $row['id']; ?></td>
@@ -102,12 +97,11 @@ $result = mysqli_query($conn, "SELECT * FROM booking ORDER BY created_at DESC");
                 <td><?= htmlspecialchars($row['email']); ?></td>
                 <td><?= htmlspecialchars($row['project_type']); ?></td>
                 <td><?= nl2br(htmlspecialchars($row['message'])); ?></td>
-                <td class="status-<?= $row['status']; ?>"><?= $row['status']; ?></td>
                 <td>
-                    <select class="progress-dropdown" onchange="changeStatus(this, <?= $row['id']; ?>)">
-                        <option value="belum" <?= $selected_belum ?>>Belum Ditentukan</option>
-                        <option value="progress" <?= $selected_progress ?>>On Progress</option>
-                        <option value="selesai" <?= $selected_selesai ?>>Selesai</option>
+                    <select class="dropdown status-<?= $row['status']; ?>" onchange="changeStatus(this, <?= $row['id']; ?>)">
+                        <option value="pending" <?= $selected_pending ?>>Pending</option>
+                        <option value="progress" <?= $selected_progress ?>>Progress</option>
+                        <option value="completed" <?= $selected_completed ?>>Completed</option>
                     </select>
                 </td>
                 <td><?= $row['created_at']; ?></td>
@@ -120,36 +114,36 @@ $result = mysqli_query($conn, "SELECT * FROM booking ORDER BY created_at DESC");
 function changeStatus(selectElement, bookingId) {
     const newStatus = selectElement.value;
 
-    // Ubah warna dropdown
-    selectElement.classList.remove("status-belum", "status-progress", "status-selesai");
+    // Ubah kelas warna dropdown
+    selectElement.classList.remove("status-pending", "status-progress", "status-completed");
     if (newStatus === "progress") {
         selectElement.classList.add("status-progress");
-    } else if (newStatus === "selesai") {
-        selectElement.classList.add("status-selesai");
+    } else if (newStatus === "completed") {
+        selectElement.classList.add("status-completed");
     } else {
-        selectElement.classList.add("status-belum");
+        selectElement.classList.add("status-pending");
     }
 
-    // Kirim AJAX update status
+    // Kirim request update ke server
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "");
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (xhr.status === 200) {
             console.log("Status berhasil diperbarui");
         } else {
             alert("Gagal update status");
         }
     };
-    xhr.send("action=update_status&id=" + bookingId + "&manual_status=" + newStatus);
+    xhr.send("action=update_status&id=" + bookingId + "&status=" + newStatus);
 }
 
-// Inisialisasi warna saat load halaman
-document.querySelectorAll(".progress-dropdown").forEach(select => {
+// Inisialisasi warna dropdown saat load halaman
+document.querySelectorAll(".dropdown").forEach(select => {
     const val = select.value;
     if(val === "progress") select.classList.add("status-progress");
-    else if(val === "selesai") select.classList.add("status-selesai");
-    else select.classList.add("status-belum");
+    else if(val === "completed") select.classList.add("status-completed");
+    else select.classList.add("status-pending");
 });
 </script>
 
