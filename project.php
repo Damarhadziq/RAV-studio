@@ -32,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Tentukan isi pesan berdasarkan kondisi
     if ($total_progress < 3) {
-        $client_message = "Proyek Anda akan segera kami mulai. Mohon ditunggu konfirmasi berikutnya.";
+        $client_message = "We are pleased to inform you that your project request has been successfully received and added to our upcoming schedule. Since we currently have capacity, your project is expected to begin shortly. Our team will review your submission in detail and reach out to you with the next steps, including timelines and additional consultation if needed. Please stay tuned for further updates from us.";
     } else {
-        $client_message = "Proyek Anda sedang dalam antrian. Kami akan menghubungi Anda saat giliran proyek Anda tiba.";
+        $client_message = "Thank you for submitting your project request. We would like to inform you that your project has been placed in our current queue due to the high volume of ongoing projects at the moment. Our team is dedicated to ensuring each project receives the attention it deserves, and we will notify you as soon as your turn approaches. We appreciate your patience and understanding, and we look forward to working with you soon.";
     }
 
     // Simpan ke database
@@ -53,15 +53,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('ravstudioandbuild@gmail.com', 'Arsitektur Studio');
+        $mail->setFrom('ravstudioandbuild@gmail.com', 'RAV Studio & Build');
         $mail->addAddress($email, $client_name);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Konfirmasi Booking Proyek Anda';
-        $mail->Body    = "<p>Halo <strong>$client_name</strong>,</p>
-                          <p>$client_message</p>
-                          <p><strong>Pesan Anda:</strong><br>" . nl2br(htmlspecialchars($message_text)) . "</p>
-                          <p>Salam,<br>Tim Arsitektur Studio</p>";
+        $mail->Subject = 'Confirm Your Project Booking';
+        $mail->Body = "
+            <p>Dear <strong>$client_name</strong>,</p>
+            <p>$client_message</p>
+            <p><strong>Your message:</strong><br>" . nl2br(htmlspecialchars($message_text)) . "</p>
+            <p>Best regards,<br><strong>RAV Studio & Build Team</strong></p>
+        ";
 
         $mail->send();
     } catch (Exception $e) {
