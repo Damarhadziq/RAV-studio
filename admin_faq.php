@@ -426,6 +426,9 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
             <li><a href="admin_booking.php" class="nav-link">
                 <i class="uil uil-calendar-alt"></i> Booking
             </a></li>
+            <li><a href="admin_project.php" class="nav-link">
+                <i class="uil uil-calendar-alt"></i> Project
+            </a></li>
         </ul>
     </div>
     <div class="nav-button">
