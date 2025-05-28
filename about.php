@@ -40,10 +40,9 @@ $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY creat
    <div class="container" data-scroll-container>
     <!-- --------------- HEADER --------------- -->
       <nav id="header">
-        <div class="nav-logo">
-            <img src="assets/img/RAV LOGO.png" alt="RAV LOGO">
-            <span>.</span>
-        </div>  
+        <a href="index.php" class="nav-logo">
+            <img src="./assets/img/RAV LOGO.png" alt="RAV LOGO">
+        </a>  
         <div class="nav-menu" id="myNavMenu">
             <ul class="nav_menu_list">
                 <li class="nav_list">
