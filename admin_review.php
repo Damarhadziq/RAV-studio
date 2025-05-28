@@ -463,6 +463,9 @@ $result = $stmt->get_result();
             <li><a href="admin_booking.php" class="nav-link">
                 <i class="uil uil-calendar-alt"></i> Booking
             </a></li>
+            <li><a href="admin_project.php" class="nav-link">
+                <i class="uil uil-calendar-alt"></i> Project
+            </a></li>
         </ul>
     </div>
     <div class="nav-button">

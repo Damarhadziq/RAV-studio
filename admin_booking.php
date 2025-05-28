@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = intval($_POST['id']);
     $status = $_POST['status'];
 
-    $allowed_status = ['pending', 'progress', 'completed'];
+    $allowed_status = ['pending', 'progress', 'completed', 'cancel'];
     if (!in_array($status, $allowed_status)) {
         http_response_code(400);
         echo "Status tidak valid";
@@ -182,7 +182,7 @@ $total_bookings = mysqli_num_rows($result);
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 3rem;
         }
 
@@ -190,6 +190,7 @@ $total_bookings = mysqli_num_rows($result);
             background: white;
             padding: 2rem;
             border-radius: 16px;
+            width: 250px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
@@ -276,7 +277,7 @@ $total_bookings = mysqli_num_rows($result);
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            min-width: 1200px;
+            min-width: 1500px; /* Updated width untuk kolom baru */
         }
 
         th, td {
@@ -305,15 +306,15 @@ $total_bookings = mysqli_num_rows($result);
             line-height: 1.5;
         }
 
-        /* Column Widths */
+        /* Column Widths - Updated untuk kolom baru */
         th:nth-child(1), td:nth-child(1) { width: 80px; }   /* ID */
         th:nth-child(2), td:nth-child(2) { width: 150px; }  /* Name */
         th:nth-child(3), td:nth-child(3) { width: 200px; }  /* Email */
         th:nth-child(4), td:nth-child(4) { width: 140px; }  /* Project Type */
         th:nth-child(5), td:nth-child(5) { width: 250px; }  /* Message */
         th:nth-child(6), td:nth-child(6) { width: 100px; }  /* Status */
-        th:nth-child(7), td:nth-child(7) { width: 120px; }  /* Date */
-        th:nth-child(8), td:nth-child(8) { width: 120px; }  /* Action */
+        th:nth-child(9), td:nth-child(9) { width: 120px; }  /* Date */
+        th:nth-child(10), td:nth-child(10) { width: 120px; } /* Action */
 
         /* Row Hover */
         tr:hover td {
@@ -408,16 +409,14 @@ $total_bookings = mysqli_num_rows($result);
             color: #065f46;
         }
 
-        /* Date Styling */
-        td:nth-child(7) time {
-            display: block;
-            line-height: 1.3;
-            font-size: 0.85rem;
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
         }
 
-        td:nth-child(7) small {
-            color: #64748b;
-            font-size: 0.75rem;
+        .status-cancel {
+            background:rgb(250, 209, 209);
+            color:rgb(154, 7, 7);
         }
 
         /* Status Select */
@@ -534,6 +533,9 @@ $total_bookings = mysqli_num_rows($result);
             <li><a href="admin_booking.php" class="nav-link active-link">
                 <i class="uil uil-calendar-alt"></i> Booking
             </a></li>
+            <li><a href="admin_project.php" class="nav-link">
+                <i class="uil uil-calendar-alt"></i> Project
+            </a></li>
         </ul>
     </div>
     <div class="nav-button">
@@ -614,6 +616,25 @@ $total_bookings = mysqli_num_rows($result);
             </div>
             <div class="stat-label">Completed</div>
         </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="uil uil-spinner"></i>
+            </div>
+            <div class="stat-number">
+                <?php 
+                mysqli_data_seek($result, 0);
+                $progress = 0;
+                while($row = mysqli_fetch_assoc($result)) {
+                    if($row['status'] == 'cancel') {
+                        $progress++;
+                    }
+                }
+                echo $progress;
+                ?>
+            </div>
+            <div class="stat-label">Canceled</div>
+        </div>
     </div>
 
     <div class="table-container">
@@ -638,7 +659,7 @@ $total_bookings = mysqli_num_rows($result);
                         <th>Project Type</th>
                         <th>Pesan</th>
                         <th>Status</th>
-                        <th>Tanggal</th>
+                        <th>Tanggal Booking</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -681,6 +702,7 @@ $total_bookings = mysqli_num_rows($result);
                                 <option value="pending" <?= $row['status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
                                 <option value="progress" <?= $row['status'] == 'progress' ? 'selected' : '' ?>>Progress</option>
                                 <option value="completed" <?= $row['status'] == 'completed' ? 'selected' : '' ?>>Completed</option>
+                                <option value="cancel" <?= $row['status'] == 'cancel' ? 'selected' : '' ?>>Canceled</option>
                             </select>
                         </td>
                     </tr>
@@ -725,6 +747,7 @@ function updateStatus(id, status) {
         alert('Terjadi kesalahan saat mengupdate status');
     });
 }
+
 </script>
 
 </body>
