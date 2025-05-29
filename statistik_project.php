@@ -362,6 +362,70 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }
 
+                /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: #1e293b !important;
+            padding: 0.75rem 1rem !important;
+            display: block !important;
+            border-radius: 0 !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease !important;
+            background: transparent !important;
+            transform: none !important;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8fafc !important;
+            color: #4a90a4 !important;
+            transform: none !important;
+        }
+
+        .dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+        .dropdown-menu a:last-child {
+            border-radius: 0 0 8px 8px !important;
+        }
+
+
         /* Main Content */
         .main-container {
             max-width: 1400px;
@@ -756,11 +820,20 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
                         <i class="uil uil-calendar-alt"></i> Booking
                     </a></li>
                 <li><a href="admin_project.php" class="nav-link">
-                        <i class="uil uil-calendar-alt"></i> Project
+                        <i class="uil uil-building"></i> Project
                     </a></li>
-                <li><a href="admin_analytics.php" class="nav-link active-link">
+                <li class="dropdown">
+                    <a href="admin_project.php" class="nav-link dropdown-toggle">
                         <i class="uil uil-analytics"></i> Analytics
                     </a>
+                    <div class="dropdown-menu">
+                        <a href="statistik_booking.php">
+                            <i class="uil uil-calendar-alt"></i> Statistik Booking
+                        </a>
+                        <a href="statistik_project.php">
+                            <i class="uil uil-chart"></i> Statistik Project
+                        </a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -1081,293 +1154,411 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
     </div>
 
     <script>
-        // Chart.js Configuration
-        Chart.defaults.font.family = 'Inter';
-        Chart.defaults.color = '#64748b';
+            // Chart.js Configuration
+            Chart.defaults.font.family = 'Inter';
+            Chart.defaults.color = '#64748b';
 
-        // Status Chart
-        const statusCtx = document.getElementById('statusChart').getContext('2d');
-        new Chart(statusCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Konsultasi', 'Desain', 'Revisi', 'Final'],
-                datasets: [{
-                    data: [<?= $konsultasiCount ?>, <?= $desainCount ?>, <?= $revisiCount ?>, <?= $finalCount ?>],
-                    backgroundColor: ['#f59e0b', '#3b82f6', '#ef4444', '#10b981'],
-                    borderWidth: 0,
-                    hoverOffset: 10
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 20,
-                            usePointStyle: true
+            // Status Chart
+            const statusCtx = document.getElementById('statusChart').getContext('2d');
+            new Chart(statusCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Konsultasi', 'Desain', 'Revisi', 'Final'],
+                    datasets: [{
+                        data: [<?= $konsultasiCount ?>, <?= $desainCount ?>, <?= $revisiCount ?>, <?= $finalCount ?>],
+                        backgroundColor: ['#f59e0b', '#3b82f6', '#ef4444', '#10b981'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        // Project Type Chart
-        const projectTypeCtx = document.getElementById('projectTypeChart').getContext('2d');
-        new Chart(projectTypeCtx, {
-            type: 'bar',
-            data: {
-                labels: [<?php foreach(array_slice($projectTypes, 0, 6, true) as $type => $count): ?>'<?= addslashes($type) ?>',<?php endforeach; ?>],
-                datasets: [{
-                    label: 'Jumlah Proyek',
-                    data: [<?php foreach(array_slice($projectTypes, 0, 6, true) as $type => $count): ?><?= $count ?>,<?php endforeach; ?>],
-                    backgroundColor: '#4a90a4',
-                    borderRadius: 6,
-                    borderSkipped: false,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            // Project Type Chart
+            const projectTypeCtx = document.getElementById('projectTypeChart').getContext('2d');
+            new Chart(projectTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: [<?php foreach(array_slice($projectTypes, 0, 6, true) as $type => $count): ?>'<?= addslashes($type) ?>',<?php endforeach; ?>],
+                    datasets: [{
+                        label: 'Jumlah Proyek',
+                        data: [<?php foreach(array_slice($projectTypes, 0, 6, true) as $type => $count): ?><?= $count ?>,<?php endforeach; ?>],
+                        backgroundColor: '#4a90a4',
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#f1f5f9'
-                        }
-                    },
-                    x: {
-                        grid: {
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
                             display: false
                         }
-                    }
-                }
-            }
-        });
-
-        // Trend Chart
-        const trendCtx = document.getElementById('trendChart').getContext('2d');
-        new Chart(trendCtx, {
-            type: 'line',
-            data: {
-                labels: [<?php foreach($trendData as $data): ?>'<?= $data['month'] ?>',<?php endforeach; ?>],
-                datasets: [{
-                    label: 'Proyek Masuk',
-                    data: [<?php foreach($trendData as $data): ?><?= $data['incoming'] ?>,<?php endforeach; ?>],
-                    borderColor: '#4a90a4',
-                    backgroundColor: 'rgba(74, 144, 164, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }, {
-                    label: 'Proyek Selesai',
-                    data: [<?php foreach($trendData as $data): ?><?= $data['completed'] ?>,<?php endforeach; ?>],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            padding: 20
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
                         }
                     }
+                }
+            });
+
+            // Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: [<?php foreach($trendData as $data): ?>'<?= $data['month'] ?>',<?php endforeach; ?>],
+                    datasets: [{
+                        label: 'Proyek Masuk',
+                        data: [<?php foreach($trendData as $data): ?><?= $data['incoming'] ?>,<?php endforeach; ?>],
+                        borderColor: '#4a90a4',
+                        backgroundColor: 'rgba(74, 144, 164, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Proyek Selesai',
+                        data: [<?php foreach($trendData as $data): ?><?= $data['completed'] ?>,<?php endforeach; ?>],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#f1f5f9'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20
+                            }
                         }
                     },
-                    x: {
-                        grid: {
-                            display: false
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        // Building Concept Chart
-        const conceptCtx = document.getElementById('conceptChart').getContext('2d');
-        new Chart(conceptCtx, {
-            type: 'pie',
-            data: {
-                labels: [<?php foreach(array_slice($buildingConcepts, 0, 5, true) as $concept => $count): ?>'<?= addslashes($concept) ?>',<?php endforeach; ?>],
-                datasets: [{
-                    data: [<?php foreach(array_slice($buildingConcepts, 0, 5, true) as $concept => $count): ?><?= $count ?>,<?php endforeach; ?>],
-                    backgroundColor: ['#4a90a4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
-                    borderWidth: 0,
-                    hoverOffset: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 15,
-                            usePointStyle: true
-                        }
-                    }
-                }
-            }
-        });
-
-        // Location Chart
-        const locationCtx = document.getElementById('locationChart').getContext('2d');
-        new Chart(locationCtx, {
-            type: 'bar',
-            data: {
-                labels: [<?php foreach(array_slice($locationAnalysis, 0, 5, true) as $location => $count): ?>'<?= addslashes($location) ?>',<?php endforeach; ?>],
-                datasets: [{
-                    label: 'Jumlah Proyek',
-                    data: [<?php foreach(array_slice($locationAnalysis, 0, 5, true) as $location => $count): ?><?= $count ?>,<?php endforeach; ?>],
-                    backgroundColor: ['#4a90a4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
-                    borderRadius: 6,
-                    borderSkipped: false,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                indexAxis: 'y',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            // Building Concept Chart
+            const conceptCtx = document.getElementById('conceptChart').getContext('2d');
+            new Chart(conceptCtx, {
+                type: 'pie',
+                data: {
+                    labels: [<?php foreach(array_slice($buildingConcepts, 0, 5, true) as $concept => $count): ?>'<?= addslashes($concept) ?>',<?php endforeach; ?>],
+                    datasets: [{
+                        data: [<?php foreach(array_slice($buildingConcepts, 0, 5, true) as $concept => $count): ?><?= $count ?>,<?php endforeach; ?>],
+                        backgroundColor: ['#4a90a4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                        borderWidth: 0,
+                        hoverOffset: 8
+                    }]
                 },
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        grid: {
-                            color: '#f1f5f9'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Location Chart
+            const locationCtx = document.getElementById('locationChart').getContext('2d');
+            new Chart(locationCtx, {
+                type: 'bar',
+                data: {
+                    labels: [<?php foreach(array_slice($locationAnalysis, 0, 5, true) as $location => $count): ?>'<?= addslashes($location) ?>',<?php endforeach; ?>],
+                    datasets: [{
+                        label: 'Jumlah Proyek',
+                        data: [<?php foreach(array_slice($locationAnalysis, 0, 5, true) as $location => $count): ?><?= $count ?>,<?php endforeach; ?>],
+                        backgroundColor: ['#4a90a4', '#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     },
-                    y: {
-                        grid: {
-                            display: false
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
                         }
                     }
                 }
+            });
+
+            // Auto-refresh functionality
+            function autoRefresh() {
+                const params = new URLSearchParams(window.location.search);
+                if (params.toString()) {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 300000); // Refresh every 5 minutes if filters are applied
+                }
             }
-        });
 
-        // Auto-refresh functionality
-        function autoRefresh() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.toString()) {
-                setTimeout(() => {
-                    window.location.reload();
-                }, 300000); // Refresh every 5 minutes if filters are applied
+            // Reset Filters Function
+            function resetFilters() {
+                // Reset semua input field
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('projectTypeFilter').value = 'all';
+
+            // Submit form untuk reload data dengan filter yang sudah direset
+            document.getElementById('filterForm').submit();
             }
-        }
 
-        // Reset Filters Function
-        function resetFilters() {
-            // Reset semua input field
-        document.getElementById('dateFrom').value = '';
-        document.getElementById('dateTo').value = '';
-        document.getElementById('statusFilter').value = 'all';
-        document.getElementById('projectTypeFilter').value = 'all';
+            // Initialize auto-refresh
+            autoRefresh();
 
-        // Submit form untuk reload data dengan filter yang sudah direset
-        document.getElementById('filterForm').submit();
-        }
-
-        // Initialize auto-refresh
-        autoRefresh();
-
-        // Filter form validation
-        document.getElementById('filterForm').addEventListener('submit', function(e) {
-            const dateFrom = document.getElementById('dateFrom').value;
-            const dateTo = document.getElementById('dateTo').value;
-            
-            if (dateFrom && dateTo && dateFrom > dateTo) {
-                e.preventDefault();
-                alert('Tanggal mulai tidak boleh lebih besar dari tanggal akhir');
-                return false;
-            }
-        });
+            // Filter form validation
+            document.getElementById('filterForm').addEventListener('submit', function(e) {
+                const dateFrom = document.getElementById('dateFrom').value;
+                const dateTo = document.getElementById('dateTo').value;
+                
+                if (dateFrom && dateTo && dateFrom > dateTo) {
+                    e.preventDefault();
+                    alert('Tanggal mulai tidak boleh lebih besar dari tanggal akhir');
+                    return false;
+                }
+            });
 
         // Export functionality (optional)
-        function exportData(format) {
-            const params = new URLSearchParams(window.location.search);
-            params.set('export', format);
-            window.location.href = '?' + params.toString();
+        function exportData() {
+            // Siapkan data CSV
+            var csvData = [];
+            
+            // Header CSV
+            csvData.push(['Metric', 'Value', 'Description', 'Date Generated']);
+            
+            // Helper function untuk escape CSV fields dengan benar
+            function escapeCSVField(field) {
+                if (field === null || field === undefined) {
+                    return '';
+                }
+                
+                // Convert ke string
+                var str = String(field);
+                
+                // Jika field mengandung koma, newline, atau double quote, wrap dengan double quotes
+                if (str.includes(',') || str.includes('\n') || str.includes('\r') || str.includes('"')) {
+                    // Escape internal double quotes dengan double double quotes
+                    str = str.replace(/"/g, '""');
+                    return '"' + str + '"';
+                }
+                
+                return str;
+            }
+            
+            // Helper function untuk format angka dalam Bahasa Indonesia
+            function formatNumber(num) {
+                return new Intl.NumberFormat('id-ID').format(num);
+            }
+            
+            // Get current date in Indonesian format
+            var currentDate = new Date().toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: '2-digit', 
+                year: 'numeric'
+            });
+            
+            // Ambil data statistik dari PHP
+            var stats = [
+                ['Total Proyek', <?= $totalProjects ?>, 'Jumlah total proyek dalam periode filter', currentDate],
+                ['Proyek Selesai', <?= $completedCount ?>, '<?= $totalProjects > 0 ? round(($completedCount / $totalProjects) * 100, 1) : 0 ?>% dari total', currentDate],
+                ['Proyek Aktif', <?= $activeCount ?>, '<?= $totalProjects > 0 ? round(($activeCount / $totalProjects) * 100, 1) : 0 ?>% dari total', currentDate],
+                ['Tingkat Konversi', '<?= $conversionRate ?>%', '<?= $startedCount ?> dari <?= $bookingCount ?> booking', currentDate],
+                ['Rata-rata Durasi', '<?= $avgDuration ?> hari', 'Durasi rata-rata penyelesaian proyek', currentDate],
+                ['Rata-rata Budget', 'Rp <?= number_format($avgBudget / 1000000, 1) ?>M', 'Budget rata-rata proyek', currentDate],
+                ['Rata-rata Luas Bangunan', '<?= $avgBuildingArea ?> m²', 'Luas bangunan rata-rata', currentDate],
+                ['Rata-rata Luas Tanah', '<?= $avgLandArea ?> m²', 'Luas tanah rata-rata', currentDate]
+            ];
+            
+            // Tambahkan data statistik
+            stats.forEach(stat => csvData.push(stat));
+            
+            // Tambahkan separator
+            csvData.push(['', '', '', '']);
+            csvData.push(['DISTRIBUSI STATUS', '', '', '']);
+            
+            // Data status
+            csvData.push(['Konsultasi', <?= $konsultasiCount ?>, 'Proyek dalam tahap konsultasi', currentDate]);
+            csvData.push(['Desain', <?= $desainCount ?>, 'Proyek dalam tahap desain', currentDate]);
+            csvData.push(['Revisi', <?= $revisiCount ?>, 'Proyek dalam tahap revisi', currentDate]);
+            csvData.push(['Final', <?= $finalCount ?>, 'Proyek dalam tahap final', currentDate]);
+            
+            // Tambahkan separator
+            csvData.push(['', '', '', '']);
+            csvData.push(['TOP JENIS PROYEK', '', '', '']);
+            
+            // Data jenis proyek (dari PHP)
+            <?php foreach(array_slice($projectTypes, 0, 10, true) as $type => $count): ?>
+            csvData.push(['<?= addslashes($type) ?>', <?= $count ?>, 'Jumlah proyek <?= addslashes($type) ?>', currentDate]);
+            <?php endforeach; ?>
+            
+            // Tambahkan separator
+            csvData.push(['', '', '', '']);
+            csvData.push(['TOP KONSEP BANGUNAN', '', '', '']);
+            
+            // Data konsep bangunan (dari PHP)
+            <?php foreach(array_slice($buildingConcepts, 0, 10, true) as $concept => $count): ?>
+            csvData.push(['<?= addslashes($concept) ?>', <?= $count ?>, 'Jumlah proyek dengan konsep <?= addslashes($concept) ?>', currentDate]);
+            <?php endforeach; ?>
+            
+            // Tambahkan separator
+            csvData.push(['', '', '', '']);
+            csvData.push(['TOP LOKASI PROYEK', '', '', '']);
+            
+            // Data lokasi (dari PHP)
+            <?php foreach(array_slice($locationAnalysis, 0, 10, true) as $location => $count): ?>
+            csvData.push(['<?= addslashes($location) ?>', <?= $count ?>, 'Jumlah proyek di <?= addslashes($location) ?>', currentDate]);
+            <?php endforeach; ?>
+            
+            // Tambahkan informasi filter
+            csvData.push(['', '', '', '']);
+            csvData.push(['INFORMASI FILTER', '', '', '']);
+            <?php if($dateFrom && $dateTo): ?>
+            csvData.push(['Periode Filter', '<?= date('d M Y', strtotime($dateFrom)) ?> - <?= date('d M Y', strtotime($dateTo)) ?>', 'Periode data yang dianalisis', currentDate]);
+            <?php endif; ?>
+            <?php if($statusFilter !== 'all'): ?>
+            csvData.push(['Status Filter', '<?= ucfirst($statusFilter) ?>', 'Filter status yang diterapkan', currentDate]);
+            <?php endif; ?>
+            <?php if($projectTypeFilter !== 'all'): ?>
+            csvData.push(['Jenis Proyek Filter', '<?= $projectTypeFilter ?>', 'Filter jenis proyek yang diterapkan', currentDate]);
+            <?php endif; ?>
+            
+            // Tambahkan data tren 12 bulan
+            csvData.push(['', '', '', '']);
+            csvData.push(['TREN 12 BULAN TERAKHIR', '', '', '']);
+            csvData.push(['Bulan', 'Proyek Masuk', 'Proyek Selesai', 'Tanggal Export']);
+            <?php foreach($trendData as $data): ?>
+            csvData.push(['<?= $data['month'] ?>', <?= $data['incoming'] ?>, <?= $data['completed'] ?>, currentDate]);
+            <?php endforeach; ?>
+            
+            // Convert ke CSV string dengan proper escaping
+            var csvString = csvData.map(row => 
+                row.map(field => escapeCSVField(field)).join(',')
+            ).join('\r\n'); // Gunakan \r\n untuk kompatibilitas Windows/Excel
+            
+            // Tambahkan BOM untuk proper UTF-8 encoding di Excel
+            var BOM = '\uFEFF';
+            csvString = BOM + csvString;
+            
+            // Buat dan download file
+            var blob = new Blob([csvString], { 
+                type: 'text/csv;charset=utf-8;' 
+            });
+            
+            // Alternatif untuk browser yang tidak support Blob constructor
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, filename);
+                return;
+            }
+            
+            var link = document.createElement('a');
+            
+            if (link.download !== undefined) {
+                var url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                
+                // Buat nama file dengan timestamp dan filter info
+                var timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                var filterInfo = '';
+                <?php if($statusFilter !== 'all'): ?>
+                filterInfo += '_<?= $statusFilter ?>';
+                <?php endif; ?>
+                <?php if($projectTypeFilter !== 'all'): ?>
+                filterInfo += '_' + '<?= str_replace(' ', '', $projectTypeFilter) ?>';
+                <?php endif; ?>
+                
+                var filename = 'RAV_Studio_Analytics${filterInfo}_${timestamp}.csv';
+                
+                link.setAttribute('download', filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Cleanup
+                setTimeout(function() {
+                    URL.revokeObjectURL(url);
+                }, 100);
+                
+                // Show success message
+                alert('✅ File CSV berhasil didownload!\n\nFile: ' + filename + '\n\nFile berisi data analytics lengkap dan telah dioptimalkan untuk Excel.\n\nTips: Jika teks masih tidak tampil dengan benar di Excel, coba buka file menggunakan "Data" > "From Text/CSV" dan pilih encoding UTF-8.');
+            } else {
+                alert('❌ Browser Anda tidak mendukung download file CSV.\n\nSilakan gunakan browser modern seperti Chrome, Firefox, atau Edge.');
+            }
         }
 
-        // Print functionality
-        function printReport() {
-            window.print();
-        }
-
-        // function printReport() {
-        //     // Simpan konten yang akan di-print
-        //     var printContent = document.querySelector('.container-fluid').innerHTML;
-        //     var originalContent = document.body.innerHTML;
-            
-        //     // Ganti body dengan konten print
-        //     document.body.innerHTML = `
-        //         <html>
-        //         <head>
-        //             <title>Projects Analytics Report - RAV Studio</title>
-        //             <style>
-        //                 body { font-family: Arial, sans-serif; margin: 20px; }
-        //                 .btn, .filter-section { display: none !important; }
-        //                 .card { border: 1px solid #ddd; margin-bottom: 20px; padding: 15px; }
-        //                 .row { display: flex; flex-wrap: wrap; }
-        //                 .col { flex: 1; margin: 10px; }
-        //                 h1, h2 { color: #333; }
-        //                 .text-center { text-align: center; }
-        //             </style>
-        //         </head>
-        //         <body>
-        //             <h1 style="text-align: center;">Projects Analytics Report</h1>
-        //             <h2 style="text-align: center;">RAV Studio</h2>
-        //             <p style="text-align: center;">Generated on: ${new Date().toLocaleDateString('id-ID')}</p>
-        //             ${printContent}
-        //         </body>
-        //         </html>
-        //     `;
-            
-        //     // Print
-        //     window.print();
-            
-        //     // Kembalikan konten asli
-        //     document.body.innerHTML = originalContent;
-        //     location.reload(); // Reload untuk mengembalikan JavaScript events
-        // }
-        
-        
-
-        // Add export and print buttons
+        // 2. Juga perbaiki fungsi untuk button action (sudah ada di kode, tapi pastikan exportData() dipanggil dengan benar):
+        // Ganti bagian ini juga:
         document.addEventListener('DOMContentLoaded', function() {
             const pageHeader = document.querySelector('.page-header');
             const actionButtons = document.createElement('div');
             actionButtons.className = 'action-buttons';
-            actionButtons.style.cssText = 'margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;';
+            actionButtons.style.cssText = 'margin-top: 1rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;';
 
             actionButtons.innerHTML = `
-                <button onclick="printReport()" class="filter-button" style="background: #6b7280;">
+                <button onclick="printReport()" class="filter-button" style="background: #6b7280; min-width: 140px;">
                     <i class="uil uil-print"></i> Print Report
                 </button>
-                <button onclick="exportData()" class="filter-button" style="background: #059669;">
+                <button onclick="exportData()" class="filter-button" style="background: #059669; min-width: 140px;">
                     <i class="uil uil-download-alt"></i> Export CSV
                 </button>
             `;
@@ -1375,60 +1566,111 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
             pageHeader.appendChild(actionButtons);
         });
 
-        // function exportCSV() {
-        //     // Ambil data dari cards statistik
-        //     var csvData = [];
-        //     csvData.push(['Metric', 'Value', 'Description']);
+        // 3. Tambahkan juga fungsi untuk export data proyek detail (optional):
+        function exportProjectDetails() {
+            // Export detail semua proyek
+            var csvData = [];
+            csvData.push(['ID', 'Client Name', 'Project Type', 'Status', 'Building Concept', 'Location', 'Building Area', 'Land Area', 'Budget', 'Created Date', 'Start Date', 'Target Completion', 'Actual Completion']);
             
-        //     // Total Proyek
-        //     var totalProyek = document.querySelector('.card:nth-child(1) h2')?.textContent || '0';
-        //     csvData.push(['Total Proyek', totalProyek, 'Jumlah total proyek']);
+            // Data proyek dari PHP (perlu ditambahkan di PHP jika ingin export detail)
+            <?php foreach($projects as $project): ?>
+            csvData.push([
+                '<?= $project['id'] ?? '' ?>',
+                '<?= addslashes($project['client_name'] ?? '') ?>',
+                '<?= addslashes($project['project_type'] ?? '') ?>',
+                '<?= addslashes($project['status'] ?? '') ?>',
+                '<?= addslashes($project['building_concept'] ?? '') ?>',
+                '<?= addslashes($project['location'] ?? '') ?>',
+                '<?= $project['building_area'] ?? 0 ?>',
+                '<?= $project['land_area'] ?? 0 ?>',
+                '<?= $project['estimated_budget'] ?? 0 ?>',
+                '<?= $project['created_at'] ?? '' ?>',
+                '<?= $project['start_date'] ?? '' ?>',
+                '<?= $project['target_completion'] ?? '' ?>',
+                '<?= $project['actual_completion'] ?? '' ?>'
+            ]);
+            <?php endforeach; ?>
             
-        //     // Proyek Selesai
-        //     var proyekSelesai = document.querySelector('.card:nth-child(2) h2')?.textContent || '0';
-        //     var persenSelesai = document.querySelector('.card:nth-child(2) small')?.textContent || '0%';
-        //     csvData.push(['Proyek Selesai', proyekSelesai, persenSelesai]);
+            // Convert and download
+            var csvString = csvData.map(row => 
+                row.map(field => "${field}").join(',')
+            ).join('\n');
             
-        //     // Proyek Aktif
-        //     var proyekAktif = document.querySelector('.card:nth-child(3) h2')?.textContent || '0';
-        //     var persenAktif = document.querySelector('.card:nth-child(3) small')?.textContent || '0%';
-        //     csvData.push(['Proyek Aktif', proyekAktif, persenAktif]);
+            var BOM = '\uFEFF';
+            csvString = BOM + csvString;
             
-        //     // Tingkat Konversi
-        //     var tingkatKonversi = document.querySelector('.card:nth-child(4) h2')?.textContent || '0%';
-        //     var detailKonversi = document.querySelector('.card:nth-child(4) small')?.textContent || '';
-        //     csvData.push(['Tingkat Konversi', tingkatKonversi, detailKonversi]);
-            
-        //     // Rata-rata Durasi
-        //     var rataDurasi = document.querySelector('.card:nth-child(5) h2')?.textContent || '0';
-        //     csvData.push(['Rata-rata Durasi (Hari)', rataDurasi, 'Durasi rata-rata penyelesaian proyek']);
-            
-        //     // Convert to CSV string
-        //     var csvString = csvData.map(row => 
-        //         row.map(field => `"${field}"`).join(',')
-        //     ).join('\n');
-            
-        //     // Download CSV
-        //     var blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
-        //     var link = document.createElement('a');
-        //     if (link.download !== undefined) {
-        //         var url = URL.createObjectURL(blob);
-        //         link.setAttribute('href', url);
-        //         link.setAttribute('download', `projects_analytics_${new Date().toISOString().split('T')[0]}.csv`);
-        //         link.style.visibility = 'hidden';
-        //         document.body.appendChild(link);
-        //         link.click();
-        //         document.body.removeChild(link);
-        //     }
-        // }
-        
+            var blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            var link = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `RAV_Studio_Project_Details_${new Date().toISOString().slice(0, 10)}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
 
-        // Add keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'r') {
-                e.preventDefault();
-                window.location.href = 'admin_analytics.php';
-            }
+        // Print functionality
+        function printReport() {
+            window.print();
+        }
+
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // Card hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.analytics-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
         });
 
     </script>

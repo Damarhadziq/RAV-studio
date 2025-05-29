@@ -178,6 +178,70 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }
 
+                /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: #1e293b !important;
+            padding: 0.75rem 1rem !important;
+            display: block !important;
+            border-radius: 0 !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease !important;
+            background: transparent !important;
+            transform: none !important;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8fafc !important;
+            color: #4a90a4 !important;
+            transform: none !important;
+        }
+
+        .dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+        .dropdown-menu a:last-child {
+            border-radius: 0 0 8px 8px !important;
+        }
+
+
         /* Main Content */
         .main-container {
             max-width: 1400px;
@@ -429,8 +493,21 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
                 <i class="uil uil-calendar-alt"></i> Booking
             </a></li>
             <li><a href="admin_project.php" class="nav-link">
-                <i class="uil uil-calendar-alt"></i> Project
+                <i class="uil uil-building"></i> Project
             </a></li>
+            <li class="dropdown">
+                    <a href="admin_project.php" class="nav-link dropdown-toggle">
+                        <i class="uil uil-analytics"></i> Analytics
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="statistik_booking.php">
+                            <i class="uil uil-calendar-alt"></i> Statistik Booking
+                        </a>
+                        <a href="statistik_project.php">
+                            <i class="uil uil-chart"></i> Statistik Project
+                        </a>
+                    </div>
+            </li>
         </ul>
     </div>
     <div class="nav-button">
@@ -514,7 +591,64 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
         </div>
     <?php endif; ?>
 </div>
+<script>
+      // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
 
+        // Card hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.analytics-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+</script>
 </body>
 </html>
 
