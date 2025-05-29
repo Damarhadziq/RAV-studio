@@ -92,6 +92,7 @@ $total_bookings = mysqli_num_rows($result);
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            height: fit-content;
             position: sticky;
             top: 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -127,6 +128,7 @@ $total_bookings = mysqli_num_rows($result);
             position: relative;
         }
 
+        
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active-link {
             color: #ffffff;
@@ -134,9 +136,13 @@ $total_bookings = mysqli_num_rows($result);
             transform: translateY(-2px);
         }
 
-        .nav-button .btn {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+        .nav-button a{
             color: white;
+            text-decoration: none;
+        }
+        .nav-button {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            text-decoration: none;
             padding: 0.75rem 1.5rem;
             border-radius: 12px;
             font-weight: 600;
@@ -145,7 +151,7 @@ $total_bookings = mysqli_num_rows($result);
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
 
-        .nav-button .btn:hover {
+        .nav-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }

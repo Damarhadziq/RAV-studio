@@ -185,8 +185,7 @@ $result = $stmt->get_result();
             margin: 0;
             padding: 0;
         }
-
-        .nav-menu ul li a {
+                .nav-menu ul li a {
             color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 500;
@@ -197,6 +196,7 @@ $result = $stmt->get_result();
             position: relative;
         }
 
+        
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active-link {
             color: #ffffff;

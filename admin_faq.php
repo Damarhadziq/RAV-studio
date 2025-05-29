@@ -118,6 +118,7 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            height: fit-content;
             position: sticky;
             top: 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -153,6 +154,7 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
             position: relative;
         }
 
+        
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active-link {
             color: #ffffff;

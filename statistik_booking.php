@@ -732,9 +732,13 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
                 <li><a href="admin_booking.php" class="nav-link">
                         <i class="uil uil-calendar-alt"></i> Booking
                     </a></li>
+                <li><a href="admin_project.php" class="nav-link">
+                <i class="uil uil-calendar-alt"></i> Project
+                    </a></li>
                 <li><a href="admin_analytics.php" class="nav-link active-link">
                         <i class="uil uil-analytics"></i> Analytics
-                    </a></li>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="nav-button">
