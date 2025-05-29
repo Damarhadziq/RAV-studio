@@ -12,7 +12,6 @@ if (!$conn) {
 // $result = mysqli_query($conn, "SELECT * FROM recent_project ORDER BY id ASC LIMIT 5"); // ambil 5 terbaru
 $clientReviews = mysqli_query($conn, "SELECT * FROM client_review ORDER BY created_at ASC");
 $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
-
 ?>
 
 <!DOCTYPE html>
@@ -91,11 +90,11 @@ $faqResult = mysqli_query($conn, "SELECT * FROM faq ORDER BY id ASC");
                        <div class="deskripsi" data-scroll data-scroll-speed="4" data-scroll-position="top">
                            <p>We deliver architectural designs that are not only functional, but also aesthetic and sustainable. Find space solutions that are elegant, modern and aligned with your vision.</p>
                        </div>
-                       <a href="#crafting" class="btn-home" data-scroll data-scroll-speed="6" data-scroll-position="top" data-scroll-to>
-                           <div class="GIT-btn">
+                       <div class="btn-home" data-scroll data-scroll-speed="6" data-scroll-position="top">
+                           <a href="#crafting"  class="GIT-btn" data-scroll-to>
                                <p>Get in Touch</p>
-                           </div>
-                       </a>
+                            </a>
+                        </div>
                        <div class="social_icons" data-scroll data-scroll-speed="5" data-scroll-position="top">
                            <div class="icon">
                                <a href="https://www.instagram.com/dmrhdz.iq" target="_blank" rel="noopener noreferrer">

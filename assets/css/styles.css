@@ -190,6 +190,7 @@ nav{
 .GIT-btn{
     display: inline-flex;
     justify-content: center;
+    text-decoration: none;
     align-items: center;
     border-radius: 10px;
     border: 2px solid var(--text-second-color);

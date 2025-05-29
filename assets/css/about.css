@@ -65,13 +65,16 @@ nav{
     transition: .3s;
     z-index: 100;
 }
+.nav-logo {
+    display: block;
+    top: -10%;
+    margin-left: 60px;
+    position: absolute;
+    width: 110px;
+    height: auto;
+}
 .nav-logo img{
-   position: fixed;
-   width: 110px;
-   height: auto;
-   left: 60px;
-   justify-content: center;
-   align-items: center;
+    width: 110px;
 }
 .nav-menu{
     display: flex;
