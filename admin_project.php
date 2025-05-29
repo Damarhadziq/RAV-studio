@@ -158,10 +158,11 @@ while($row = mysqli_fetch_assoc($result)) {
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         ::-webkit-scrollbar{
             width: 10px;
             border-radius: 25px;
+            display: none;
         }
         ::-webkit-scrollbar-track{
             background: #f1f1f1;

@@ -220,21 +220,19 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
             box-sizing: border-box;
         }
 
-        ::-webkit-scrollbar {
+        ::-webkit-scrollbar{
             width: 10px;
             border-radius: 25px;
+            display: none;
         }
-
-        ::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track{
             background: #f1f1f1;
         }
-
-        ::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb{
             background: #ccc;
             border-radius: 30px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
+        ::-webkit-scrollbar-thumb:hover{
             background: #bbb;
         }
 
@@ -1188,7 +1186,7 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
 
         // Reset Filters Function
         function resetFilters() {
-            // Reset semua input field
+        // Reset semua input field
         document.getElementById('dateFrom').value = '';
         document.getElementById('dateTo').value = '';
         document.getElementById('statusFilter').value = 'all';
@@ -1212,18 +1210,28 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
         // Export functionality (basic CSV export)
         function exportData() {
             const data = [
+                ['RAV Studio - Analytics Report'],
+                ['Generated On', new Date().toLocaleString()],
+                [], // Baris kosong
+                ['Summary'],
                 ['Metric', 'Value'],
                 ['Total Booking', '<?= $totalBookings ?>'],
                 ['Pending', '<?= $pendingCount ?>'],
                 ['Progress', '<?= $progressCount ?>'],
                 ['Completed', '<?= $completedCount ?>'],
                 ['Cancel', '<?= $cancelCount ?>'],
+                [],
+                ['Rates'],
+                ['Metric', 'Value'],
                 ['Success Rate', '<?= $successRate ?>%'],
                 ['Cancel Rate', '<?= $cancelRate ?>%'],
+                [],
+                ['Client Insight'],
                 ['New Clients', '<?= $newClients ?>'],
                 ['Repeat Clients', '<?= $repeatClients ?>'],
                 ['Avg Message Length', '<?= $avgMessageLength ?>'],
-                ['Peak Hour', '<?= $peakHourFormatted ?>']
+                ['Peak Hour', '<?= $peakHourFormatted ?>'],
+                [],
             ];
 
             let csvContent = "data:text/csv;charset=utf-8,";
@@ -1239,6 +1247,7 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
             link.click();
             document.body.removeChild(link);
         }
+
 
         // Add export and print buttons
         document.addEventListener('DOMContentLoaded', function() {

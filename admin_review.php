@@ -185,7 +185,7 @@ $result = $stmt->get_result();
             margin: 0;
             padding: 0;
         }
-                .nav-menu ul li a {
+        .nav-menu ul li a {
             color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 500;
