@@ -69,6 +69,7 @@ $total_bookings = mysqli_num_rows($result);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RAV Studio - Admin Booking</title>
+    <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -153,13 +154,10 @@ $total_bookings = mysqli_num_rows($result);
             transform: translateY(-2px);
         }
 
-        .nav-button a{
-            color: white;
-            text-decoration: none;
-        }
-        .nav-button {
+        .nav-button .btn {
+            all: unset;
             background: linear-gradient(135deg, #ef4444, #dc2626);
-            text-decoration: none;
+            color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 12px;
             font-weight: 600;
@@ -168,7 +166,7 @@ $total_bookings = mysqli_num_rows($result);
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
 
-        .nav-button:hover {
+        .nav-button .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }

@@ -166,6 +166,7 @@ while($row = mysqli_fetch_assoc($result)) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RAV Studio - Admin Projects</title>
+    <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -248,6 +249,7 @@ while($row = mysqli_fetch_assoc($result)) {
         }
 
         .nav-button .btn {
+            all: unset;
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
             padding: 0.75rem 1.5rem;
@@ -256,8 +258,8 @@ while($row = mysqli_fetch_assoc($result)) {
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-
+        }   
+        
         .nav-button .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
@@ -891,7 +893,7 @@ while($row = mysqli_fetch_assoc($result)) {
                 <i class="uil uil-calendar-alt"></i> Booking
             </a></li>
             <li><a href="admin_project.php" class="nav-link active-link">
-                <i class="uil uil-building"></i> Projects
+                <i class="uil uil-building"></i> Project
             </a></li>
             <li class="dropdown">
                     <a href="admin_project.php" class="nav-link dropdown-toggle">

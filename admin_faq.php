@@ -79,6 +79,7 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RAV Studio - Admin FAQ</title>
+    <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -179,6 +180,7 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
         }
 
         .nav-button .btn {
+            all: unset;
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
             padding: 0.75rem 1.5rem;
@@ -188,7 +190,7 @@ $edit_id = isset($_POST['edit']) ? (int)$_POST['id'] : null;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
-
+        
         .nav-button .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);

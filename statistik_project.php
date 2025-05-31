@@ -279,6 +279,7 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RAV Studio - Projects Analytics Dashboard</title>
+    <link rel="shortcut icon" href="assets/img/RAV LOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -363,6 +364,7 @@ $allProjectTypes = mysqli_query($conn, "SELECT DISTINCT project_type FROM projec
         }
 
         .nav-button .btn {
+            all: unset;
             background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
             padding: 0.75rem 1.5rem;
