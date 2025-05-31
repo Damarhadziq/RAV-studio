@@ -13,14 +13,17 @@
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
 
-            if ($email === $valid_username && $password === $valid_password) {
-                $_SESSION['logged_in'] = true;
-                $_SESSION['last_activity'] = time(); 
-                header("Location: admin_review.php"); // diarahkan ke dashboard admin
-                exit();
-            } else {
-                $error = 'Email atau password salah.';
-            }
+          if ($email === $valid_username && $password === $valid_password) {
+              $_SESSION['logged_in'] = true;
+              $_SESSION['last_activity'] = time(); 
+              
+              // Redirect ke halaman yang diminta atau default ke admin_review.php
+              $redirect = $_GET['redirect'] ?? 'admin_review.php';
+              header("Location: " . $redirect);
+              exit();
+          } else {
+              $error = 'Email atau password salah.';
+          }
         }
 
         if (isset($_SESSION['login_message'])) {

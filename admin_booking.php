@@ -1,11 +1,28 @@
 <?php
 session_start();
 
+
+// Timeout duration (2 jam)
+$timeout_duration = 2 * 60 * 60;
+
 // Cek apakah user sudah login
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: login.php");
+    $current_page = basename($_SERVER['PHP_SELF']);
+    header("Location: login.php?redirect=" . $current_page);
     exit();
 }
+
+// Cek session timeout
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    $current_page = basename($_SERVER['PHP_SELF']);
+    header("Location: login.php?redirect=" . $current_page);
+    exit();
+}
+
+// Update last activity
+$_SESSION['last_activity'] = time();
 
 $localhost  = "localhost";
 $username   = "root";
