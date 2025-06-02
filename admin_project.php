@@ -1004,7 +1004,7 @@ while($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <tr>
                         <td>
-                            <span class="id-badge">#<?= $row['id'] ?></span>
+                            <span class="id-badge">#<?php echo $row['id'] ?></span>
                         </td>
                         
                         <td>

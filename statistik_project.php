@@ -60,7 +60,7 @@ function getFilteredData($conn, $dateFrom = null, $dateTo = null, $status = null
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
             $types = str_repeat('s', count($params));
-            mysqli_stmt_bind_param($stmt, $types, ...$params);
+            call_user_func_array(array($stmt, 'bind_param'), array_merge(array($types), $params));
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
         } else {
@@ -88,23 +88,23 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 // 🔹 1. STATISTIK UMUM
 $totalProjects = count($projects);
-$konsultasiCount = count(array_filter($projects, fn($p) => $p['status'] === 'konsultasi'));
-$desainCount = count(array_filter($projects, fn($p) => $p['status'] === 'desain'));
-$revisiCount = count(array_filter($projects, fn($p) => $p['status'] === 'revisi'));
-$finalCount = count(array_filter($projects, fn($p) => $p['status'] === 'final'));
+$konsultasiCount = count(array_filter($projects, function($p) { return $p['status'] === 'konsultasi'; }));
+$desainCount = count(array_filter($projects, function($p) { return $p['status'] === 'desain'; }));
+$revisiCount = count(array_filter($projects, function($p) { return $p['status'] === 'revisi'; }));
+$finalCount = count(array_filter($projects, function($p) { return $p['status'] === 'final'; }));
 
 // Proyek selesai (ada actual_completion)
-$completedProjects = array_filter($projects, fn($p) => !empty($p['actual_completion']));
+$completedProjects = array_filter($projects, function($p) { return !empty($p['actual_completion']); });
 $completedCount = count($completedProjects);
 
 // Proyek aktif (ada start_date tapi belum ada actual_completion)
-$activeProjects = array_filter($projects, fn($p) => !empty($p['start_date']) && empty($p['actual_completion']));
+$activeProjects = array_filter($projects, function($p) { return !empty($p['start_date']) && empty($p['actual_completion']); });
 $activeCount = count($activeProjects);
 
 // Rata-rata luas bangunan dan tanah
-$buildingAreas = array_filter(array_column($projects, 'building_area'), fn($area) => $area > 0);
-$landAreas = array_filter(array_column($projects, 'land_area'), fn($area) => $area > 0);
-$budgets = array_filter(array_column($projects, 'estimated_budget'), fn($budget) => $budget > 0);
+$buildingAreas = array_filter(array_column($projects, 'building_area'), function($area) { return $area > 0; });
+$landAreas = array_filter(array_column($projects, 'land_area'), function($area) { return $area > 0; });
+$budgets = array_filter(array_column($projects, 'estimated_budget'), function($budget) { return $budget > 0; });
 
 $avgBuildingArea = count($buildingAreas) > 0 ? round(array_sum($buildingAreas) / count($buildingAreas), 2) : 0;
 $avgLandArea = count($landAreas) > 0 ? round(array_sum($landAreas) / count($landAreas), 2) : 0;
@@ -233,8 +233,8 @@ foreach ($projects as $project) {
 }
 
 // 🔹 6. KONVERSI BOOKING
-$bookingCount = count(array_filter($projects, fn($p) => !empty($p['booking_date'])));
-$startedCount = count(array_filter($projects, fn($p) => !empty($p['start_date'])));
+$bookingCount = count(array_filter($projects, function($p) { return !empty($p['booking_date']); }));
+$startedCount = count(array_filter($projects, function($p) { return !empty($p['start_date']); }));
 $conversionRate = $bookingCount > 0 ? round(($startedCount / $bookingCount) * 100, 1) : 0;
 
 // Data untuk grafik bulanan tahun ini
