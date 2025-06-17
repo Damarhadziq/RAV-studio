@@ -327,7 +327,6 @@ $growthRate = $lastMonthCount > 0 ? round((($thisMonthCount - $lastMonthCount) /
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }
 
-                /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
